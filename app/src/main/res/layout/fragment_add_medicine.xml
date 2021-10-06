@@ -1,0 +1,1639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity.AddMedicineFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.04" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/background_color"
+        android:elevation="5dp"
+        android:outlineSpotShadowColor="@color/shadow_color"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/back_button_id"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:outlineAmbientShadowColor="@color/background_color"
+            android:outlineSpotShadowColor="@color/background_color"
+            android:background="@drawable/button_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </Button>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:text="Add Medicine"
+            android:textColor="@color/lightModeText_color"
+            android:textSize="18dp"
+            app:layout_constraintStart_toEndOf="@+id/back_button_id">
+
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="Add your daily medicine and keep track for them"
+                android:textColor="@color/lightModeText_color"
+                android:textSize="22dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline1"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/background_string">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/background_color"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Medicine Name"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="2dp"
+                    android:textColorHint="@color/lightModeThirdText_color"
+                    app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                    app:hintTextColor="@color/lightModeThirdText_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/layoutId_nameCrossButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.405"
+                    tools:ignore="MissingConstraints">
+
+                    <EditText
+                        android:id="@+id/editTextId_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:backgroundTint="@color/background_color"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:paddingRight="42dp"
+                        android:singleLine="true"
+                        android:textColor="@color/lightModeText_color"
+                        android:textCursorDrawable="@drawable/text_cursor">
+
+                    </EditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutId_nameCrossButton"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:alpha="0.7"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="w,1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/buttonId_nameCrossButton"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/button_cross">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/background_string">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/background_color"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Medicine type"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="2dp"
+                    android:textColorHint="@color/lightModeThirdText_color"
+                    app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                    app:hintTextColor="@color/lightModeThirdText_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/layoutId_Button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.405"
+                    tools:ignore="MissingConstraints">
+
+                    <EditText
+                        android:id="@+id/editTextId_selectType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/background_color"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:paddingRight="42dp"
+                        android:singleLine="true"
+                        android:text="Select a type"
+                        android:textColor="@color/lightModeText_color"
+                        android:textCursorDrawable="@drawable/text_cursor">
+
+                    </EditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutId_Button"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:alpha="0.7"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="w,1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/icon_arrow_down_24">
+
+                    </Button>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayoutId_selectType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_tabletQuantity"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="Tablet Quantity"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_string">
+
+                    <Button
+                        android:id="@+id/buttonId_minusButton"
+                        android:text="-"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_minus"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                    <TextView
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/textViewId_tablet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="17dp"
+                        android:text="1 Tablet">
+
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/buttonId_plusButton"
+                        android:text="+"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_plus"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutId_syrupQuantity"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="Syrup Quantity"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayoutId_syrup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_string">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="15dp"
+                            android:backgroundTint="@color/background_color"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center_vertical"
+                            android:hint="Total"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="2dp"
+                            android:textColorHint="@color/lightModeThirdText_color"
+                            app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                            app:hintTextColor="@color/lightModeThirdText_color"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.405"
+                            tools:ignore="MissingConstraints">
+
+                            <EditText
+                                android:id="@+id/editTextId_syrup"
+                                android:layout_width="55dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:backgroundTint="@color/background_color"
+                                android:inputType="number"
+                                android:clickable="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:gravity="center_vertical"
+                                android:singleLine="true"
+                                android:textColor="@color/lightModeText_color"
+                                android:textCursorDrawable="@drawable/text_cursor">
+
+                            </EditText>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/textView_syrup"
+                            android:layout_marginRight="18dp"
+                            android:paddingTop="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:textColor="@color/lightModeText_color"
+                            android:text="mm"
+                            android:textSize="17dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </TextView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/background_string">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputLayout3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:backgroundTint="@color/background_color"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center_vertical"
+                            android:hint="Select"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="2dp"
+                            android:textColorHint="@color/lightModeThirdText_color"
+                            app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                            app:hintTextColor="@color/lightModeThirdText_color"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/layoutId_syrupSelect"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.405"
+                            tools:ignore="MissingConstraints">
+
+                            <EditText
+                                android:id="@+id/editTextId_syrupSelect"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/background_color"
+                                android:clickable="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:gravity="center_vertical"
+                                android:paddingRight="42dp"
+                                android:singleLine="true"
+                                android:text="mm"
+                                android:textColor="@color/lightModeText_color"
+                                android:textCursorDrawable="@drawable/text_cursor">
+
+                            </EditText>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutId_syrupSelect"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:alpha="0.7"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="w,1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <Button
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:background="@drawable/icon_arrow_down_24">
+
+                            </Button>
+
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayoutId_syrupSelect"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_dropperQuantity"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="Dropper Quantity"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_string">
+
+                    <Button
+                        android:id="@+id/buttonId_dropperMinusButton"
+                        android:text="-"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_minus"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                    <TextView
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/textViewId_dropper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="17dp"
+                        android:text="1 Drop">
+
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/buttonId_dropperPlusButton"
+                        android:text="+"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_plus"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_injectionQuantity"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="Injetion Quantity"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_string">
+
+                    <Button
+                        android:id="@+id/buttonId_injectionMinusButton"
+                        android:text="-"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_minus"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                    <TextView
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/textViewId_injection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="17dp"
+                        android:text="1 injection">
+
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/buttonId_injectionPlusButton"
+                        android:text="+"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_plus"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Medicine continues for"
+                android:textColor="@color/lightModeThirdText_color">
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="13dp"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayoutId_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_string">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="15dp"
+                        android:backgroundTint="@color/background_color"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Total"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="2dp"
+                        android:textColorHint="@color/lightModeThirdText_color"
+                        app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                        app:hintTextColor="@color/lightModeThirdText_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.405"
+                        tools:ignore="MissingConstraints">
+
+                        <EditText
+                            android:id="@+id/editTextId_total"
+                            android:layout_width="55dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="@color/background_color"
+                            android:inputType="number"
+                            android:clickable="false"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:textColor="@color/lightModeText_color"
+                            android:textCursorDrawable="@drawable/text_cursor">
+
+                        </EditText>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/textView_total"
+                        android:layout_marginRight="18dp"
+                        android:paddingTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:textColor="@color/lightModeText_color"
+                        android:text="Days"
+                        android:textSize="17dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/background_string">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:backgroundTint="@color/background_color"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Select"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="2dp"
+                        android:textColorHint="@color/lightModeThirdText_color"
+                        app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                        app:hintTextColor="@color/lightModeThirdText_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/layoutId_select"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.405"
+                        tools:ignore="MissingConstraints">
+
+                        <EditText
+                            android:id="@+id/editTextId_select"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:backgroundTint="@color/background_color"
+                            android:clickable="false"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center_vertical"
+                            android:paddingRight="42dp"
+                            android:singleLine="true"
+                            android:text="Day"
+                            android:textColor="@color/lightModeText_color"
+                            android:textCursorDrawable="@drawable/text_cursor">
+
+                        </EditText>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutId_select"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:alpha="0.7"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="w,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Button
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="@drawable/icon_arrow_down_24">
+
+                        </Button>
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayoutId_select"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewId_dueTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Until 15 September, 2021"
+                android:textColor="@color/main_color">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Medicine based on"
+                android:textColor="@color/lightModeThirdText_color">
+
+            </TextView>
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_hourly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:button="@drawable/radio_button"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:text="  Hourly"
+                    android:textColor="@color/lightModeText_color"
+                    android:textSize="18dp">
+
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_session"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:button="@drawable/radio_button"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingTop="3dp"
+                    android:text="  Session wise"
+                    android:textColor="@color/lightModeText_color"
+                    android:textSize="18dp">
+
+                </RadioButton>
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_hourly"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="In every"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_string">
+
+                    <Button
+                        android:id="@+id/buttonId_horulyMinusButton"
+                        android:text="-"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_minus"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                    <TextView
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/textViewId_hourly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="17dp"
+                        android:text="1 Hour">
+
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/buttonId_hourlyPlusButton"
+                        android:text="+"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_plus"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical"
+                android:id="@+id/linearLayout_SeasonWise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/buttonId_morningButton"
+                        android:background="@drawable/background_string"
+                        android:textColor="@color/main_color"
+                        android:text="Morning"
+                        android:textAllCaps="false"
+                        android:paddingHorizontal="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/buttonId_noonButton"
+                        android:background="@drawable/background_string"
+                        android:textColor="@color/main_color"
+                        android:text="Noon"
+                        android:textAllCaps="false"
+                        android:layout_marginLeft="10dp"
+                        android:paddingHorizontal="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/buttonId_afternoonButton"
+                        android:background="@drawable/background_string"
+                        android:textColor="@color/main_color"
+                        android:text="Afternoon"
+                        android:textAllCaps="false"
+                        android:layout_marginLeft="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </Button>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/buttonId_eveningButton"
+                        android:background="@drawable/background_string"
+                        android:textColor="@color/main_color"
+                        android:text="Evening"
+                        android:textAllCaps="false"
+                        android:paddingHorizontal="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </Button>
+
+                    <Button
+                        android:id="@+id/buttonId_nightButton"
+                        android:background="@drawable/background_string"
+                        android:textColor="@color/main_color"
+                        android:text="Night"
+                        android:textAllCaps="false"
+                        android:layout_marginLeft="10dp"
+                        android:paddingHorizontal="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutId_meal"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Consume time"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupId_meal"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="8dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioButtonId_beforeMeal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:button="@drawable/radio_button"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="  Before Meal"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="18dp">
+
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonId_afterMeal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="30dp"
+                        android:button="@drawable/radio_button"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="  After meal"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="18dp">
+
+                    </RadioButton>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutId_optional"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/background_string">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_id5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/background_color"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Description (Optional)"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="2dp"
+                        android:textColorHint="@color/lightModeThirdText_color"
+                        app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                        app:hintTextColor="@color/lightModeThirdText_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/layoutId_descriptionCrossButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.405"
+                        tools:ignore="MissingConstraints">
+
+                        <EditText
+                            android:id="@+id/editTextId_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="@color/background_color"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center_vertical"
+                            android:paddingRight="42dp"
+                            android:singleLine="true"
+                            android:textColor="@color/lightModeText_color"
+                            android:textCursorDrawable="@drawable/text_cursor">
+
+                        </EditText>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutId_descriptionCrossButton"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:alpha="0.7"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="w,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Button
+                            android:id="@+id/buttonId_descriptionCrossButton"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/button_cross">
+
+                        </Button>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="22dp"
+                    android:background="@drawable/background_string">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_id6"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/background_color"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Instruction (Optional)"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="2dp"
+                        android:textColorHint="@color/lightModeThirdText_color"
+                        app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                        app:hintTextColor="@color/lightModeThirdText_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/layoutId_instructionCrossButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.405"
+                        tools:ignore="MissingConstraints">
+
+                        <EditText
+                            android:id="@+id/editTextId_instruction"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:backgroundTint="@color/background_color"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center_vertical"
+                            android:paddingRight="42dp"
+                            android:singleLine="true"
+                            android:textColor="@color/lightModeText_color"
+                            android:textCursorDrawable="@drawable/text_cursor">
+
+                        </EditText>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutId_instructionCrossButton"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:alpha="0.7"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="w,1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Button
+                            android:id="@+id/buttonId_instructionCrossButton"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/button_cross">
+
+                        </Button>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buttonId_add"
+                android:layout_marginTop="25dp"
+                android:paddingTop="5dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Add"
+                android:background="@drawable/button"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+            </Button>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutId_black"
+        android:background="@color/black"
+        android:alpha="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/bottomSheetId_selectMedicineType"
+            android:background="@drawable/background_bottomsheet"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:behavior_peekHeight="300dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="35dp"
+                android:layout_height="6dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bottomsheet_holder"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/buttonId_selectMedicineTypeSheet"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/icon_cross"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Select medicine type"
+                    android:textColor="@color/lightModeText_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewId_selectMedicineTypeSheetReset"
+                    app:layout_constraintStart_toEndOf="@+id/buttonId_selectMedicineTypeSheet"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/textViewId_selectMedicineTypeSheetReset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
+                    android:textColor="@color/line_color"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:background="@color/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_marginVertical="15dp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_tablet"
+                    android:buttonTint="@color/main_color"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Tablet"
+                    android:textSize="15dp"
+                    android:textColor="@color/lightModeText_color"
+                    android:layoutDirection="rtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_syrup"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/main_color"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Syrup"
+                    android:textSize="15dp"
+                    android:textColor="@color/lightModeText_color"
+                    android:layoutDirection="rtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_dropper"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/main_color"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Dropper"
+                    android:textSize="15dp"
+                    android:textColor="@color/lightModeText_color"
+                    android:layoutDirection="rtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_injection"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/main_color"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Injection"
+                    android:textSize="15dp"
+                    android:textColor="@color/lightModeText_color"
+                    android:layoutDirection="rtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </RadioButton>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/bottomSheetId_select"
+            android:background="@drawable/background_bottomsheet"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:behavior_peekHeight="300dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="35dp"
+                android:layout_height="6dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bottomsheet_holder"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/buttonId_select"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/icon_cross"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Select medicine type"
+                    android:textColor="@color/lightModeText_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewId_selectReset"
+                    app:layout_constraintStart_toEndOf="@+id/buttonId_select"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/textViewId_selectReset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
+                    android:textColor="@color/line_color"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:background="@color/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_marginVertical="15dp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_day"
+                    android:buttonTint="@color/main_color"
+                    android:checked="true"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Day"
+                    android:textSize="15dp"
+                    android:textColor="@color/lightModeText_color"
+                    android:layoutDirection="rtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_month"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/main_color"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Month"
+                    android:textSize="15dp"
+                    android:textColor="@color/lightModeText_color"
+                    android:layoutDirection="rtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </RadioButton>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/bottomSheetId_syrupType"
+            android:background="@drawable/background_bottomsheet"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:behavior_peekHeight="300dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="35dp"
+                android:layout_height="6dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bottomsheet_holder"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/buttonId_syrup"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="18dp"
+                    android:background="@drawable/icon_cross"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </Button>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Select quantity type"
+                    android:textColor="@color/lightModeText_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewId_syrupReset"
+                    app:layout_constraintStart_toEndOf="@+id/buttonId_syrup"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/textViewId_syrupReset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
+                    android:textColor="@color/line_color"
+                    android:textSize="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </TextView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:background="@color/line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_marginVertical="15dp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_mm"
+                    android:buttonTint="@color/main_color"
+                    android:checked="true"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="mm"
+                    android:textSize="15dp"
+                    android:textColor="@color/lightModeText_color"
+                    android:layoutDirection="rtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </RadioButton>
+
+                <RadioButton
+                    android:id="@+id/radioButtonId_spoon"
+                    android:layout_marginTop="10dp"
+                    android:buttonTint="@color/main_color"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Spoon"
+                    android:textSize="15dp"
+                    android:textColor="@color/lightModeText_color"
+                    android:layoutDirection="rtl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </RadioButton>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

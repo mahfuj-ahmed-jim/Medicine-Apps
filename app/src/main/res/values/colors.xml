@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- basic colro -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="main_color">#0F6E71</color>
+    <color name="second_color">#DAF2F2</color>
+    <color name="third_color">#E7FBFB</color>
+    <color name="red_color">#FEC7C7</color>
+    <color name="shadow_color">#E3E4E6</color>
+    <color name="crossButton_color">#BBBBB9</color>
+    <color name="line_color">#C8C8C8</color>
+
+    <!-- light mode -->
+    <color name="background_color">#FFFFFF</color>
+    <color name="lightModeText_color">#000000</color>
+    <color name="lightModeSecondText_color">#7A7A7A</color>
+    <color name="lightModeThirdText_color">#AFAFAE</color>
+
+</resources>
