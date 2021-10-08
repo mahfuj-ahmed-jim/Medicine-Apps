@@ -4,13 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity.HomeFragment">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="157dp"
+        android:orientation="horizontal"
+        android:background="@drawable/background_home_header">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="38dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi Mahfuj"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="25dp"
+                android:textColor="#303536"
+                >
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="keep it up!"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="13dp"
+                android:textColor="#303536">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You are on the right track!"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="13dp"
+                android:textColor="#303536">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/doctor_icon"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="80dp">
+
+        </ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_home_title"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Life’s challenges are not supposed to paralyze you,they’re supposed to help you discover who you are."
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="13dp"
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="65dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="#303536">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:background="@drawable/background_home_search">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="17dp"
+            android:layout_marginLeft="14dp"
+            android:src="@drawable/search_icon">
+
+        </ImageView>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="search your medicine"
+            android:fontFamily="@font/poppins_regular"
+            android:background="null"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="17dp"
+            android:paddingRight="70dp"
+            android:textSize="15dp"
+            android:textColor="#303536">
+
+        </EditText>
+
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="fdfdfdf"></TextView>
+        android:layout_marginTop="23dp"
+        android:layout_marginHorizontal="14dp"
+        android:text="Today's Mediciens"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="20dp"
+        android:textColor="#303536">
+
+    </TextView>
 
 
 
