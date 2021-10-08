@@ -1,46 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity.SettingsFragment">
 
-   <androidx.core.widget.NestedScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/background_color"
+        android:elevation="5dp"
+        android:outlineSpotShadowColor="@color/shadow_color"
+        app:layout_constraintTop_toTopOf="parent">
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
+        <Button
+            android:id="@+id/back_button_id"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:outlineAmbientShadowColor="@color/background_color"
+            android:outlineSpotShadowColor="@color/background_color"
+            android:background="@drawable/button_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-           <LinearLayout
-               android:orientation="horizontal"
-               android:layout_width="match_parent"
-               android:layout_height="52dp">
+        </Button>
 
-               <Button
-                   android:background="@drawable/button_back"
-                   android:layout_width="52dp"
-                   android:layout_height="52dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:text="Settings"
+            android:textColor="@color/lightModeText_color"
+            android:textSize="18dp"
+            app:layout_constraintStart_toEndOf="@+id/back_button_id">
 
-               </Button>
+        </TextView>
 
-               <TextView
-                   android:fontFamily="@font/poppins_regular"
-                   android:textSize="22dp"
-                   android:textColor="@color/main_color"
-                   android:gravity="center"
-                   android:text="Settings"
-                   android:layout_marginLeft="10dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="match_parent">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-               </TextView>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
 
-           </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-       </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/black"
+                android:orientation="horizontal">
 
-   </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
 
-</LinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

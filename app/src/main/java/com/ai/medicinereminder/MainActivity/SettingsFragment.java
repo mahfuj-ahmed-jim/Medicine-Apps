@@ -1,5 +1,6 @@
 package com.ai.medicinereminder.MainActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
+import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.R;
 
 public class SettingsFragment extends Fragment {
@@ -20,6 +24,11 @@ public class SettingsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    // button
+    private Button backButton;
+
+    private LinearLayout linearLayout;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -49,6 +58,33 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        // button
+        backButton = view.findViewById(R.id.back_button_id);
+
+        linearLayout = view.findViewById(R.id.linear);
+
+        // on click listeners
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity().getApplicationContext(), PageActivity.class);
+                intent.putExtra(getActivity().getApplicationContext().getString(R.string.activity),
+                        getActivity().getApplicationContext().getString(R.string.medicineTime));
+                startActivity(intent);
+
+                getActivity().overridePendingTransition(0, 0); //intent animation
+
+            }
+        });
 
         return view;
     }
