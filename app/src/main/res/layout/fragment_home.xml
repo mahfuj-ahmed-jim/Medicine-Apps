@@ -25,7 +25,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hi Mahfuj"
-                android:fontFamily="@font/poppins_bold"
+                android:fontFamily="@font/poppins_regular"
+                android:textStyle="bold"
                 android:textSize="25dp"
                 android:textColor="#303536"
                 >
@@ -38,7 +39,7 @@
                 android:text="keep it up!"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="13dp"
-                android:textColor="#303536">
+                android:textColor="@color/lightModeSecondText_color">
 
             </TextView>
             <TextView
@@ -47,7 +48,7 @@
                 android:text="You are on the right track!"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="13dp"
-                android:textColor="#303536">
+                android:textColor="@color/lightModeSecondText_color">
 
             </TextView>
 
@@ -76,12 +77,12 @@
             android:layout_height="match_parent"
             android:text="Life’s challenges are not supposed to paralyze you,they’re supposed to help you discover who you are."
             android:fontFamily="@font/poppins_regular"
-            android:textSize="13dp"
+            android:textSize="15dp"
             android:layout_marginVertical="20dp"
             android:layout_marginHorizontal="65dp"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:textColor="#303536">
+            android:textColor="@color/lightModeSecondText_color">
 
         </TextView>
 
@@ -125,12 +126,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:layout_marginHorizontal="14dp"
-        android:text="Today's Mediciens"
+        android:text="Today's Medicines"
         android:fontFamily="@font/poppins_medium"
         android:textSize="20dp"
         android:textColor="#303536">
 
     </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
 
 
 
