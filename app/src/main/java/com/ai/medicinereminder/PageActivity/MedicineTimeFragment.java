@@ -2,6 +2,7 @@ package com.ai.medicinereminder.PageActivity;
 
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ public class MedicineTimeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ConstraintLayout morningLayout, noonLayout, afternoonLayout, eveningLayout, nightLayout;
 
     public MedicineTimeFragment() {
         // Required empty public constructor
@@ -49,6 +52,19 @@ public class MedicineTimeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_medicine_time, container, false);
+
+        morningLayout = view.findViewById(R.id.constraintId_morning);
+        noonLayout = view.findViewById(R.id.constraintId_noon);
+        afternoonLayout = view.findViewById(R.id.constraintId_afternoon);
+        eveningLayout = view.findViewById(R.id.constraintId_evening);
+        nightLayout = view.findViewById(R.id.constraintId_night);
+
+        morningLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         return view;
     }
