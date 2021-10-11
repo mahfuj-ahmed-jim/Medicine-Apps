@@ -4,18 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.ai.medicinereminder.MainActivity.AddMedicineFragment;
 import com.ai.medicinereminder.MainActivity.HomeFragment;
 import com.ai.medicinereminder.MainActivity.MedicineFragment;
 import com.ai.medicinereminder.MainActivity.SettingsFragment;
 import com.ai.medicinereminder.R;
-import com.ai.medicinereminder.MainActivity.ViewPagerAdapter;
+import com.ai.medicinereminder.Adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {

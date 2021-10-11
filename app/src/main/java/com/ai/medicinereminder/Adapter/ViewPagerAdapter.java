@@ -1,4 +1,4 @@
-package com.ai.medicinereminder.MainActivity;
+package com.ai.medicinereminder.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
