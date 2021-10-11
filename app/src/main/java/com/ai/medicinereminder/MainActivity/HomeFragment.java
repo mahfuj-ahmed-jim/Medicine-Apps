@@ -11,22 +11,28 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.ai.medicinereminder.PageActivity.Model_home_card;
-import com.ai.medicinereminder.PageActivity.home_Card_Adapter;
+import com.ai.medicinereminder.Adapter.HomeCardAdapter;
+import com.ai.medicinereminder.Database.Medicine;
 import com.ai.medicinereminder.R;
 
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
+    //RecyclerView
     private RecyclerView MedicineCard;
-    private ArrayList<Model_home_card> cardArrayList;
-    home_Card_Adapter cardAdapter;
 
+    //Medicine List
+    private ArrayList<Medicine> cardArrayList;
 
+    //Card Adapter
+    HomeCardAdapter cardAdapter;
+
+    //TextView
     private TextView userName,homeQuote;
-    private EditText medicineSearch;
 
+    //EditText
+    private EditText medicineSearch;
 
 
     @Override

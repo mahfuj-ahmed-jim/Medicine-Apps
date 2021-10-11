@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="true"
+    android:id="@+id/home_card_frame_bg"
+    android:background="@drawable/background_home_search">
 
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/home_card_frame_bg"
-        android:background="@drawable/background_home_search">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -43,7 +42,7 @@
                     </TextView>
 
                     <TextView
-                        android:id="@+id/home_medicineCount"
+                        android:id="@+id/home_medicineQuantity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="14dp"
@@ -53,6 +52,7 @@
                         android:textSize="14dp">
 
                     </TextView>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -61,29 +61,32 @@
                     android:layout_marginLeft="90dp"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal">
+
                     <TextView
-                        android:id="@+id/home_meal"
+                        android:id="@+id/home_ConsumeTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
                         android:text="After Meal"
                         android:textColor="@color/lightModeSecondText_color"
                         android:textSize="14dp"
-
                         android:layout_marginHorizontal="14dp">
 
                     </TextView>
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/dinner">
 
                     </ImageView>
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -91,9 +94,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-
-
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -108,8 +108,9 @@
                             android:src="@drawable/ellipse_2">
 
                         </ImageView>
+
                         <TextView
-                            android:id="@+id/home_time01"
+                            android:id="@+id/home_Morning"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="29dp"
@@ -120,7 +121,9 @@
                             android:textSize="14dp">
 
                         </TextView>
+
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -135,6 +138,7 @@
                             android:background="#0F6E71" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -147,8 +151,9 @@
                             android:src="@drawable/icon_ellipse_3">
 
                         </ImageView>
+
                         <TextView
-                            android:id="@+id/home_time02"
+                            android:id="@+id/home_Noon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-2dp"
@@ -159,7 +164,9 @@
                             android:textSize="14dp">
 
                         </TextView>
+
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -174,6 +181,7 @@
                             android:background="#0F6E71" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -186,8 +194,9 @@
                             android:src="@drawable/icon_ellipse_3">
 
                         </ImageView>
+
                         <TextView
-                            android:id="@+id/home_time03"
+                            android:id="@+id/home_Afternoon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="06 : 00 PM "
@@ -198,7 +207,9 @@
                             android:textColor="@color/lightModeSecondText_color">
 
                         </TextView>
+
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -213,6 +224,7 @@
                             android:background="#0F6E71" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -225,8 +237,9 @@
                             android:src="@drawable/icon_ellipse_3">
 
                         </ImageView>
+
                         <TextView
-                            android:id="@+id/home_time04"
+                            android:id="@+id/home_Evening"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-2dp"
@@ -237,7 +250,9 @@
                             android:textColor="@color/lightModeSecondText_color">
 
                         </TextView>
+
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -252,11 +267,11 @@
                             android:background="#0F6E71" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-
                         android:layout_marginLeft="23dp">
 
                         <ImageView
@@ -265,8 +280,9 @@
                             android:src="@drawable/icon_ellipse_3">
 
                         </ImageView>
+
                         <TextView
-                            android:id="@+id/home_time05"
+                            android:id="@+id/home_Night"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-2dp"
@@ -277,19 +293,24 @@
                             android:textColor="@color/lightModeSecondText_color">
 
                         </TextView>
+
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="14dp">
 
                     </LinearLayout>
+
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <ImageView
-                        android:id="@+id/home_medicineType"
+                        android:id="@+id/home_medicineTypeImage"
                         android:layout_gravity="center"
                         android:layout_marginLeft="100dp"
                         android:layout_width="wrap_content"
@@ -297,17 +318,11 @@
                         android:src="@drawable/icon_tablet">
 
                     </ImageView>
-                </LinearLayout>
-            </LinearLayout>
 
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-
-
-
-
-    </FrameLayout>
-
-
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
