@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.ai.medicinereminder.Alarm.Alarm;
 import com.ai.medicinereminder.Alarm.AlarmReceiver;
 import com.ai.medicinereminder.R;
 
@@ -109,29 +110,16 @@ public class MedicineTimeFragment extends Fragment {
 
                 Log.d("Alarm", calendar.getTime()+" "+calendar.getTimeInMillis());
 
-                setAlarm(calendar);
+                int sessionId = 1;
+
+                Alarm alarm = new Alarm(getActivity().getApplicationContext());
+                alarm.setAlarm(calendar, sessionId);
 
             }
         }, hour, minute, false);//Yes 24 hour time
 
         timePicker.setTitle("Pick Time");
         timePicker.show();
-
-    }
-
-    private void setAlarm(Calendar calendar){
-
-        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(getActivity(), AlarmReceiver.class);
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        }else{
-            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                    AlarmManager.INTERVAL_DAY, pendingIntent);
-        }
 
     }
 
