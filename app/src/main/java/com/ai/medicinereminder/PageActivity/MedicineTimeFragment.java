@@ -1,15 +1,23 @@
 package com.ai.medicinereminder.PageActivity;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.ai.medicinereminder.R;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class MedicineTimeFragment extends Fragment {
 
@@ -22,6 +30,11 @@ public class MedicineTimeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    // time picker
+    private TimePickerDialog timePicker;
+    private Calendar calendar;
+
+    // layouts
     private ConstraintLayout morningLayout, noonLayout, afternoonLayout, eveningLayout, nightLayout;
 
     public MedicineTimeFragment() {
@@ -62,10 +75,32 @@ public class MedicineTimeFragment extends Fragment {
         morningLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setTimer(1);
             }
         });
 
         return view;
     }
+
+    private void setTimer(int id) {
+
+        timePicker = new TimePickerDialog(getActivity(), android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+
+                calendar = Calendar.getInstance();
+                calendar.set(Calendar.HOUR_OF_DAY, selectedHour);
+                calendar.set(Calendar.MINUTE, selectedMinute);
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
+
+            }
+        }, 10, 35, false);//Yes 24 hour time
+
+        timePicker.setTitle("Pick Time");
+        timePicker.show();
+
+    }
+
 }
