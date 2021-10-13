@@ -32,6 +32,17 @@ public class Alarm {
 
     }
 
+    public void updateAlarm(Calendar calendar, int sessionId){
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, PendingIntent.FLAG_ONE_SHOT);
+        alarmManager.cancel(pendingIntent);
+
+        setAlarm(calendar, sessionId);
+
+    }
+
     public void cancelAlarm(int sessionId){
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

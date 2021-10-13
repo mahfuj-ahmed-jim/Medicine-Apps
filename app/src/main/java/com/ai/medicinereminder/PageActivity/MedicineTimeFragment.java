@@ -93,8 +93,7 @@ public class MedicineTimeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity().getApplicationContext(), "Clicked", Toast.LENGTH_LONG).show();
-                alarm.cancelAlarm(1);
+                setTimer(1);
 
             }
         });
@@ -107,7 +106,6 @@ public class MedicineTimeFragment extends Fragment {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
-
 
         TimePickerDialog timePicker;
 
