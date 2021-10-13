@@ -1,18 +1,25 @@
 package com.ai.medicinereminder.PageActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.ai.medicinereminder.Alarm.AlarmReceiver;
 import com.ai.medicinereminder.R;
 
 import java.text.ParseException;
@@ -29,10 +36,6 @@ public class MedicineTimeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    // time picker
-    private TimePickerDialog timePicker;
-    private Calendar calendar;
 
     // layouts
     private ConstraintLayout morningLayout, noonLayout, afternoonLayout, eveningLayout, nightLayout;
@@ -84,22 +87,51 @@ public class MedicineTimeFragment extends Fragment {
 
     private void setTimer(int id) {
 
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+
+
+        TimePickerDialog timePicker;
+
         timePicker = new TimePickerDialog(getActivity(), android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
-
+                Calendar calendar;
                 calendar = Calendar.getInstance();
                 calendar.set(Calendar.HOUR_OF_DAY, selectedHour);
                 calendar.set(Calendar.MINUTE, selectedMinute);
                 calendar.set(Calendar.SECOND, 0);
                 calendar.set(Calendar.MILLISECOND, 0);
 
+                //calendar.add(Calendar.DATE, 1);
+
+                Log.d("Alarm", calendar.getTime()+" "+calendar.getTimeInMillis());
+
+                setAlarm(calendar);
+
             }
-        }, 10, 35, false);//Yes 24 hour time
+        }, hour, minute, false);//Yes 24 hour time
 
         timePicker.setTitle("Pick Time");
         timePicker.show();
+
+    }
+
+    private void setAlarm(Calendar calendar){
+
+        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getActivity(), AlarmReceiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        }else{
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
 
     }
 
