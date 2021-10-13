@@ -38,6 +38,9 @@ public class MedicineTimeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    // alarm
+    private Alarm alarm;
+
     // layouts
     private ConstraintLayout morningLayout, noonLayout, afternoonLayout, eveningLayout, nightLayout;
 
@@ -70,6 +73,9 @@ public class MedicineTimeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_medicine_time, container, false);
 
+        // alarm
+        alarm = new Alarm(getActivity().getApplicationContext());
+
         morningLayout = view.findViewById(R.id.constraintId_morning);
         noonLayout = view.findViewById(R.id.constraintId_noon);
         afternoonLayout = view.findViewById(R.id.constraintId_afternoon);
@@ -83,10 +89,20 @@ public class MedicineTimeFragment extends Fragment {
             }
         });
 
+        noonLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getActivity().getApplicationContext(), "Clicked", Toast.LENGTH_LONG).show();
+                alarm.cancelAlarm(1);
+
+            }
+        });
+
         return view;
     }
 
-    private void setTimer(int id) {
+    private void setTimer(int sessionId) {
 
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
@@ -110,9 +126,6 @@ public class MedicineTimeFragment extends Fragment {
 
                 Log.d("Alarm", calendar.getTime()+" "+calendar.getTimeInMillis());
 
-                int sessionId = 1;
-
-                Alarm alarm = new Alarm(getActivity().getApplicationContext());
                 alarm.setAlarm(calendar, sessionId);
 
             }

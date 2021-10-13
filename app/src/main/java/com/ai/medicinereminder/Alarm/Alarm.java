@@ -32,4 +32,13 @@ public class Alarm {
 
     }
 
+    public void cancelAlarm(int sessionId){
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, PendingIntent.FLAG_ONE_SHOT);
+        alarmManager.cancel(pendingIntent);
+
+    }
+
 }
