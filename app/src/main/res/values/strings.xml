@@ -4,6 +4,15 @@
 
     <string name="activity">activity</string>
 
+    <!-- shared preference -->
+    <string name="TimingInformation">TimingInformation</string>
+    <string name="timeData">timeData</string>
+    <string name="morningTime">morningTime</string>
+    <string name="noonTime">noonTime</string>
+    <string name="afternoonTime">afternoonTime</string>
+    <string name="eveningTime">eveningTime</string>
+    <string name="nightTime">nightTime</string>
+
     <!-- fragment -->
     <string name="medicineTime">Medicine Time</string>
 
