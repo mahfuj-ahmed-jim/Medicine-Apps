@@ -11,7 +11,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Toast.makeText(context, "Hello", Toast.LENGTH_LONG).show();
+
 
     }
 }

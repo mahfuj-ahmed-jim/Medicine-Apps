@@ -16,15 +16,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.ai.medicinereminder.Alarm.Alarm;
-import com.ai.medicinereminder.Alarm.AlarmReceiver;
 import com.ai.medicinereminder.R;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MedicineTimeFragment extends Fragment {
@@ -40,6 +37,9 @@ public class MedicineTimeFragment extends Fragment {
 
     // alarm
     private Alarm alarm;
+
+    // textViews
+    private TextView morningTime, noonTime, afternoonTime,eveningTime, nightTime;
 
     // layouts
     private ConstraintLayout morningLayout, noonLayout, afternoonLayout, eveningLayout, nightLayout;
@@ -76,6 +76,14 @@ public class MedicineTimeFragment extends Fragment {
         // alarm
         alarm = new Alarm(getActivity().getApplicationContext());
 
+        // textView
+        morningTime = view.findViewById(R.id.textViewId_morning);
+        noonTime = view.findViewById(R.id.textViewId_noon);
+        afternoonTime = view.findViewById(R.id.textViewId_afternoon);
+        eveningTime = view.findViewById(R.id.textViewId_evening);
+        nightTime = view.findViewById(R.id.textViewId_night);
+
+        // layouts
         morningLayout = view.findViewById(R.id.constraintId_morning);
         noonLayout = view.findViewById(R.id.constraintId_noon);
         afternoonLayout = view.findViewById(R.id.constraintId_afternoon);
@@ -93,7 +101,34 @@ public class MedicineTimeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                setTimer(1);
+                setTimer(2);
+
+            }
+        });
+
+        afternoonLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                setTimer(3);
+
+            }
+        });
+
+        eveningLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                setTimer(4);
+
+            }
+        });
+
+        nightLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                setTimer(5);
 
             }
         });
@@ -126,6 +161,8 @@ public class MedicineTimeFragment extends Fragment {
 
                 alarm.setAlarm(calendar, sessionId);
 
+                changeTime(sessionId, selectedHour, selectedMinute);
+
             }
         }, hour, minute, false);//Yes 24 hour time
 
@@ -133,5 +170,54 @@ public class MedicineTimeFragment extends Fragment {
         timePicker.show();
 
     }
+
+    private void changeTime(int sessionId, int selectedHour, int selectedMinute) {
+
+        String time;
+
+        if(selectedHour>12){
+
+            if(selectedHour>=22){
+                time = selectedHour%12+" : "+selectedMinute+" : PM";
+            }else{
+                time = "0"+selectedHour%12+" : "+selectedMinute+" : PM";
+            }
+
+        }else{
+
+            if(selectedHour>=10){
+                time = selectedHour+" : "+selectedMinute+" : AM";
+            }else{
+                time = "0"+selectedHour+" : "+selectedMinute+" : AM";
+            }
+
+        }
+
+        switch(sessionId){
+
+            case 1 :
+                morningTime.setText(time);
+                return;
+
+            case 2 :
+                noonTime.setText(time);
+                return;
+
+            case 3 :
+                afternoonTime.setText(time);
+                return;
+
+            case 4 :
+                eveningTime.setText(time);
+                return;
+
+            case 5 :
+                nightTime.setText(time);
+                return;
+
+        }
+
+    }
+
 
 }
