@@ -21,6 +21,7 @@ import android.widget.TimePicker;
 
 import com.ai.medicinereminder.Alarm.Alarm;
 import com.ai.medicinereminder.R;
+import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
 
 import java.util.Calendar;
 
@@ -37,6 +38,9 @@ public class MedicineTimeFragment extends Fragment {
 
     // alarm
     private Alarm alarm;
+
+    // share preference for time
+    private MedicineSharedPreference medicineSharedPreference;
 
     // textViews
     private TextView morningTime, noonTime, afternoonTime,eveningTime, nightTime;
@@ -90,6 +94,10 @@ public class MedicineTimeFragment extends Fragment {
         eveningLayout = view.findViewById(R.id.constraintId_evening);
         nightLayout = view.findViewById(R.id.constraintId_night);
 
+        // set up timer textViews
+        medicineSharedPreference = new MedicineSharedPreference(getActivity().getApplicationContext());
+        initializeTimerTextViews();
+
         morningLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +144,16 @@ public class MedicineTimeFragment extends Fragment {
         return view;
     }
 
+    private void initializeTimerTextViews() {
+
+        morningTime.setText(medicineSharedPreference.getData(1)); // morning
+        noonTime.setText(medicineSharedPreference.getData(2)); // noon
+        afternoonTime.setText(medicineSharedPreference.getData(3)); // afternoon
+        eveningTime.setText(medicineSharedPreference.getData(4)); // evening
+        nightTime.setText(medicineSharedPreference.getData(5)); // night
+
+    }
+
     private void setTimer(int sessionId) {
 
         Calendar mcurrentTime = Calendar.getInstance();
@@ -154,10 +172,6 @@ public class MedicineTimeFragment extends Fragment {
                 calendar.set(Calendar.MINUTE, selectedMinute);
                 calendar.set(Calendar.SECOND, 0);
                 calendar.set(Calendar.MILLISECOND, 0);
-
-                //calendar.add(Calendar.DATE, 1);
-
-                Log.d("Alarm", calendar.getTime()+" "+calendar.getTimeInMillis());
 
                 alarm.setAlarm(calendar, sessionId);
 
@@ -197,23 +211,23 @@ public class MedicineTimeFragment extends Fragment {
 
             case 1 :
                 morningTime.setText(time);
-                return;
+                break;
 
             case 2 :
                 noonTime.setText(time);
-                return;
+                break;
 
             case 3 :
                 afternoonTime.setText(time);
-                return;
+                break;
 
             case 4 :
                 eveningTime.setText(time);
-                return;
+                break;
 
             case 5 :
                 nightTime.setText(time);
-                return;
+                break;
 
         }
 
