@@ -173,7 +173,7 @@ public class MedicineTimeFragment extends Fragment {
                 calendar.set(Calendar.SECOND, 0);
                 calendar.set(Calendar.MILLISECOND, 0);
 
-                alarm.setAlarm(calendar, sessionId);
+                alarm.updateAlarm(calendar, sessionId);
 
                 changeTime(sessionId, selectedHour, selectedMinute);
 
@@ -210,23 +210,28 @@ public class MedicineTimeFragment extends Fragment {
         switch(sessionId){
 
             case 1 :
-                morningTime.setText(time);
+                morningTime.setText(time); // morning
+                medicineSharedPreference.setData(1, time); // shared preference
                 break;
 
             case 2 :
-                noonTime.setText(time);
+                noonTime.setText(time); // noob
+                medicineSharedPreference.setData(2, time); // shared preference
                 break;
 
             case 3 :
-                afternoonTime.setText(time);
+                afternoonTime.setText(time); // afternoon
+                medicineSharedPreference.setData(3, time); // shared preference
                 break;
 
             case 4 :
-                eveningTime.setText(time);
+                eveningTime.setText(time); // evening
+                medicineSharedPreference.setData(4, time); // shared preference
                 break;
 
             case 5 :
-                nightTime.setText(time);
+                nightTime.setText(time); // night
+                medicineSharedPreference.setData(5, time); // shared preference
                 break;
 
         }
