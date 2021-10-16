@@ -146,11 +146,51 @@ public class MedicineTimeFragment extends Fragment {
 
     private void initializeTimerTextViews() {
 
-        morningTime.setText(medicineSharedPreference.getData(1)); // morning
-        noonTime.setText(medicineSharedPreference.getData(2)); // noon
-        afternoonTime.setText(medicineSharedPreference.getData(3)); // afternoon
-        eveningTime.setText(medicineSharedPreference.getData(4)); // evening
-        nightTime.setText(medicineSharedPreference.getData(5)); // night
+        morningTime.setText(timeFormat(medicineSharedPreference.getData(1))); // morning
+        noonTime.setText(timeFormat(medicineSharedPreference.getData(2))); // noon
+        afternoonTime.setText(timeFormat(medicineSharedPreference.getData(3))); // afternoon
+        eveningTime.setText(timeFormat(medicineSharedPreference.getData(4))); // evening
+        nightTime.setText(timeFormat(medicineSharedPreference.getData(5))); // night
+
+    }
+
+    private String timeFormat(String time){
+
+        String timeFormat = null;
+
+        String[] split = time.split(" : ", 5);
+
+        if(split[2].equals("PM")){
+
+            if(Integer.parseInt(split[0]) >= 10){
+                timeFormat = Integer.parseInt(split[0]) % 12+" : ";
+            }else{
+                timeFormat = "0"+Integer.parseInt(split[0]) % 12+" : ";
+            }
+
+            if(Integer.parseInt(split[1])>=10){
+                timeFormat = timeFormat+Integer.parseInt(split[1])+" : PM";
+            }else{
+                timeFormat = timeFormat+"0"+Integer.parseInt(split[1])+" : PM";
+            }
+
+        }else{
+
+            if(Integer.parseInt(split[0]) >= 10){
+                timeFormat = Integer.parseInt(split[0]) % 12+" : ";
+            }else{
+                timeFormat = "0"+Integer.parseInt(split[0]) % 12+" : ";
+            }
+
+            if(Integer.parseInt(split[1])>=10){
+                timeFormat = timeFormat+Integer.parseInt(split[1])+" : AM";
+            }else{
+                timeFormat = timeFormat+"0"+Integer.parseInt(split[1])+" : AM";
+            }
+
+        }
+
+        return timeFormat;
 
     }
 
@@ -192,17 +232,29 @@ public class MedicineTimeFragment extends Fragment {
         if(selectedHour>12){
 
             if(selectedHour>=22){
-                time = selectedHour%12+" : "+selectedMinute+" : PM";
+                time = selectedHour%12+" : ";
             }else{
-                time = "0"+selectedHour%12+" : "+selectedMinute+" : PM";
+                time = "0"+selectedHour%12+" : ";
+            }
+
+            if(selectedMinute>=10){
+                time = time+selectedMinute+" : PM";
+            }else{
+                time = time+"0"+selectedMinute+" : PM";
             }
 
         }else{
 
             if(selectedHour>=10){
-                time = selectedHour+" : "+selectedMinute+" : AM";
+                time = selectedHour%12+" : ";
             }else{
-                time = "0"+selectedHour+" : "+selectedMinute+" : AM";
+                time = "0"+selectedHour%12+" : ";
+            }
+
+            if(selectedMinute>=10){
+                time = time+selectedMinute+" : AM";
+            }else{
+                time = time+"0"+selectedMinute+" : AM";
             }
 
         }
