@@ -43,11 +43,11 @@ public class SplashActivity extends AppCompatActivity {
 
         if(time == null){
 
-            medicineSharedPreference.setData(1, "08 : 00 AM"); // morning
-            medicineSharedPreference.setData(2, "01 : 00 PM"); // noon
-            medicineSharedPreference.setData(3, "04 : 30 PM"); // afternoon
-            medicineSharedPreference.setData(4, "06 : 30 PM"); // evening
-            medicineSharedPreference.setData(5, "09 : 00 PM"); // night
+            medicineSharedPreference.setData(1, "08 : 00 : AM"); // morning
+            medicineSharedPreference.setData(2, "01 : 00 : PM"); // noon
+            medicineSharedPreference.setData(3, "04 : 30 : PM"); // afternoon
+            medicineSharedPreference.setData(4, "06 : 30 : PM"); // evening
+            medicineSharedPreference.setData(5, "09 : 00 : PM"); // night
 
             // morning
             calendar.set(Calendar.HOUR_OF_DAY, 8);

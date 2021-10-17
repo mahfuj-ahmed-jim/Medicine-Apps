@@ -4,9 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
-import com.ai.medicinereminder.MainActivity.AddMedicineFragment;
+import com.ai.medicinereminder.MainActivity.HistoryFragment;
+import com.ai.medicinereminder.PageActivity.AddMedicineFragment;
 import com.ai.medicinereminder.MainActivity.HomeFragment;
 import com.ai.medicinereminder.MainActivity.MedicineFragment;
 import com.ai.medicinereminder.MainActivity.SettingsFragment;
@@ -24,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     // fragments
     private HomeFragment homeFragment = new HomeFragment();
-    private AddMedicineFragment addMedicineFragment = new AddMedicineFragment();
     private MedicineFragment medicineFragment = new MedicineFragment();
+    private HistoryFragment historyFragment = new HistoryFragment();
     private SettingsFragment settingsFragment = new SettingsFragment();
 
 
@@ -33,6 +38,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        try{
+            // status bar color
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.setStatusBarColor(getResources().getColor(R.color.second_color));
+            }
+        }catch (Exception e){
+        }
 
         // tab layout
         tabLayout = findViewById(R.id.tabLayoutId);
@@ -52,6 +68,34 @@ public class MainActivity extends AppCompatActivity {
 
                         POSITION [0] = POSITION [1];
                         POSITION [1] = tab.getPosition();
+
+                        if(tab.getPosition() == 0){
+
+                            try{
+                                // status bar color
+                                Window window = getWindow();
+                                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    window.setStatusBarColor(getResources().getColor(R.color.second_color));
+                                }
+                            }catch (Exception e){
+                            }
+
+                        }else{
+
+                            try{
+                                // status bar color
+                                Window window = getWindow();
+                                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    window.setStatusBarColor(getResources().getColor(R.color.white));
+                                }
+                            }catch (Exception e){
+                            }
+
+                        }
 
                     }
 
@@ -77,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
         // add views for each category
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
         viewPagerAdapter.addFragment(homeFragment, "Home");
-        viewPagerAdapter.addFragment(addMedicineFragment, "Add");
         viewPagerAdapter.addFragment(medicineFragment, "Medicine");
+        viewPagerAdapter.addFragment(historyFragment, "History");
         viewPagerAdapter.addFragment(settingsFragment, "Settings");
 
         viewPager.setAdapter(viewPagerAdapter);

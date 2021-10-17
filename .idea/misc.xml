@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Medicine Apps/app/src/main/res/drawable/background_home_header.xml" value="0.23472222222222222" />
         <entry key="..\:/Android/Medicine Apps/app/src/main/res/drawable/background_home_search.xml" value="0.271875" />
         <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/activity_splash.xml" value="0.11203703703703703" />
         <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/card_medicine_home_fragment.xml" value="0.2164855072463768" />
         <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/fragment_add_medicine.xml" value="0.152" />
+        <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/fragment_history.xml" value="0.22037037037037038" />
+        <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/fragment_home.xml" value="0.1480978260869565" />
         <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/fragment_medicine_time.xml" value="0.536" />
         <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/fragment_settings.xml" value="0.15307971014492755" />
         <entry key="..\:/Android/Medicine Apps/app/src/main/res/layout/popup_medicinetime.xml" value="0.23055555555555557" />

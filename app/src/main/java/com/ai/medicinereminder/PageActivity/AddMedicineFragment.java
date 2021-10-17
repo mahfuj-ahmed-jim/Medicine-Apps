@@ -1,4 +1,4 @@
- package com.ai.medicinereminder.MainActivity;
+ package com.ai.medicinereminder.PageActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
