@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
+import com.ai.medicinereminder.PageActivity.AddMedicineFragment;
 import com.ai.medicinereminder.PageActivity.MedicineTimeFragment;
 import com.ai.medicinereminder.R;
 
@@ -14,6 +15,8 @@ public class PageActivity extends AppCompatActivity {
     private Fragment selectedFragment = null;
     private static String FRAGMENT_TAG;
 
+    // fragments
+    private AddMedicineFragment addMedicineFragment = new AddMedicineFragment();
     private MedicineTimeFragment medicineTimeFragment = new MedicineTimeFragment();
 
     @Override
@@ -28,6 +31,12 @@ public class PageActivity extends AppCompatActivity {
             //set fragment (log in fragment)
             selectedFragment = medicineTimeFragment;
             FRAGMENT_TAG = getApplicationContext().getString(R.string.medicineTime);
+
+        }else if(activity.equals(getApplicationContext().getString(R.string.addMedicine))){
+
+            //set fragment (log in fragment)
+            selectedFragment = addMedicineFragment;
+            FRAGMENT_TAG = getApplicationContext().getString(R.string.addMedicine);
 
         }
 

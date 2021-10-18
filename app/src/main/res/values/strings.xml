@@ -14,6 +14,7 @@
     <string name="nightTime">nightTime</string>
 
     <!-- fragment -->
+    <string name="addMedicine">Add Medicine</string>
     <string name="medicineTime">Medicine Time</string>
 
     <!-- TODO: Remove or change this placeholder text -->
