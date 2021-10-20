@@ -63,9 +63,6 @@ public class Medicine implements Serializable {
     @ColumnInfo(name = "Description")
     private String description;
 
-    @ColumnInfo(name = "Instruction")
-    private String instruction;
-
     public Medicine() {
 
     }
@@ -198,15 +195,6 @@ public class Medicine implements Serializable {
 
     public void setDescription(@NonNull String description) {
         this.description = description;
-    }
-
-    @NonNull
-    public String getInstruction() {
-        return instruction;
-    }
-
-    public void setInstruction(@NonNull String instruction) {
-        this.instruction = instruction;
     }
 
 }

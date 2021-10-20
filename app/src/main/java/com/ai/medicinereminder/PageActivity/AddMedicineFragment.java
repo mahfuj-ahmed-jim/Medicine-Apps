@@ -1045,7 +1045,6 @@ import java.util.List;
         boolean night = this.night;
         int consumeTime;
         String description = null;
-        String instruction = null;
 
         // set value of the variables
         name = nameEditText.getText().toString().trim();
@@ -1115,7 +1114,6 @@ import java.util.List;
         medicine.setNight(night);
         medicine.setConsumeTime(consumeTime);
         medicine.setDescription(description);
-        medicine.setInstruction(instruction);
 
         // add to room database
         mainDatabase.medicineDao().insertMedicine(medicine);

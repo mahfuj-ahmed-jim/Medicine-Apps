@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:text="keep it up!"
-                    android:textSize="13dp"
+                    android:textSize="15dp"
                     android:textColor="@color/lightModeSecondText_color">
 
                 </TextView>
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
                     android:text="You are on the right track!"
-                    android:textSize="13dp"
+                    android:textSize="15dp"
                     android:textColor="@color/lightModeSecondText_color">
 
                 </TextView>
@@ -87,7 +87,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_regular"
                 android:text="Life’s challenges are not supposed to paralyze you,they’re supposed to help you discover who you are."
-                android:textSize="15dp"
+                android:textSize="18dp"
                 android:textAlignment="center"
                 android:textColor="@color/lightModeSecondText_color">
 
@@ -120,9 +120,10 @@
                 android:layout_marginTop="15dp"
                 android:paddingRight="70dp"
                 android:hint="search your medicine"
+                android:textColorHint="@color/main_color"
                 android:background="@null"
                 android:fontFamily="@font/poppins_regular"
-                android:textSize="15dp"
+                android:textSize="18dp"
                 android:textColor="#303536">
 
             </EditText>
