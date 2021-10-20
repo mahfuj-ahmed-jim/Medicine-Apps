@@ -1,9 +1,11 @@
 package com.ai.medicinereminder.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -97,11 +99,19 @@ public class MainActivity extends AppCompatActivity {
 
                         }
 
+                        // change icon color
+                        int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.main_color);
+                        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+
                     }
 
                     @Override
                     public void onTabUnselected(TabLayout.Tab tab) {
                         super.onTabUnselected(tab);
+
+                        // change icon color
+                        int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.lightModeThirdText_color);
+                        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
 
                     }
 
@@ -130,10 +140,19 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0); // set home as first item
 
         // set icons for tab layout
-        /*tabLayout.getTabAt(0).setIcon(R.drawable.icon_home);
-        tabLayout.getTabAt(1).setIcon(R.drawable.icon_search);
-        tabLayout.getTabAt(2).setIcon(R.drawable.icon_mysearch);
-        tabLayout.getTabAt(3).setIcon(R.drawable.icon_menu);*/
+        tabLayout.getTabAt(0).setIcon(R.drawable.home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.medicine);
+        tabLayout.getTabAt(2).setIcon(R.drawable.history);
+        tabLayout.getTabAt(3).setIcon(R.drawable.settings);
+
+        // initial color
+        int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.main_color);
+        int tabIconColor2 = ContextCompat.getColor(getApplicationContext(), R.color.lightModeThirdText_color);
+
+        tabLayout.getTabAt(0).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(1).getIcon().setColorFilter(tabIconColor2, PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(2).getIcon().setColorFilter(tabIconColor2, PorterDuff.Mode.SRC_IN);
+        tabLayout.getTabAt(3).getIcon().setColorFilter(tabIconColor2, PorterDuff.Mode.SRC_IN);
 
     }
 

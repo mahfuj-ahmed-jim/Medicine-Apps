@@ -1015,7 +1015,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Consume time"
+                    android:text="Consume time (according to meal)"
                     android:textColor="@color/lightModeThirdText_color"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -1038,7 +1038,7 @@
                         android:button="@drawable/radio_button"
                         android:fontFamily="@font/poppins_regular"
                         android:paddingTop="3dp"
-                        android:text="  Before Meal"
+                        android:text="  Before"
                         android:textColor="@color/lightModeText_color"
                         android:textSize="18dp">
 
@@ -1048,11 +1048,25 @@
                         android:id="@+id/radioButtonId_afterMeal"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginLeft="20dp"
                         android:button="@drawable/radio_button"
                         android:fontFamily="@font/poppins_regular"
                         android:paddingTop="3dp"
-                        android:text="  After meal"
+                        android:text="  After"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="18dp">
+
+                    </RadioButton>
+
+                    <RadioButton
+                        android:id="@+id/radioButtonId_anyTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:button="@drawable/radio_button"
+                        android:fontFamily="@font/poppins_regular"
+                        android:paddingTop="3dp"
+                        android:text="  Any time"
                         android:textColor="@color/lightModeText_color"
                         android:textSize="18dp">
 

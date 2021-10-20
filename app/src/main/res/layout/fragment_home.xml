@@ -30,7 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Hi Mahfuj"
+                    android:text="Hello User"
                     android:textStyle="bold"
                     android:textSize="25dp"
                     android:textColor="#303536"
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:background="@drawable/background_home_title">
 
             <TextView
@@ -95,45 +95,51 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
             android:background="@drawable/background_home_search">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="17dp"
-                android:layout_marginLeft="14dp"
-                android:src="@drawable/search_icon">
+                android:id="@+id/imageView"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/search_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             </ImageView>
 
             <EditText
                 android:id="@+id/home_medicineSearch"
+                android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="15dp"
-                android:paddingRight="70dp"
-                android:hint="search your medicine"
-                android:textColorHint="@color/main_color"
                 android:background="@null"
                 android:fontFamily="@font/poppins_regular"
+                android:hint="search your medicine"
+                android:paddingRight="70dp"
+                android:textColor="#303536"
+                android:textColorHint="@color/main_color"
                 android:textSize="18dp"
-                android:textColor="#303536">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent">
 
             </EditText>
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="25dp"
             android:layout_marginHorizontal="14dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Today's Medicines"
