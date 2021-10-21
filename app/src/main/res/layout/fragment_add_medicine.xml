@@ -155,8 +155,8 @@
 
                     <Button
                         android:id="@+id/buttonId_nameCrossButton"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:background="@drawable/button_cross">
 
                     </Button>

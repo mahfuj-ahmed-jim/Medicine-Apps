@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,6 +42,17 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull HomeRecyclerViewAdapter.Viewholder holder, int position) {
 
+        // background color
+        if(position%4 == 0){
+            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_purple));
+        }else if(position%4 == 1){
+            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_green));
+        }else if(position%4 == 2){
+            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_yellow));
+        }else{
+            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_red));
+        }
+
     }
 
     @Override
@@ -51,8 +63,15 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
     public class Viewholder extends RecyclerView.ViewHolder {
 
+        // background
+        private ConstraintLayout backgroundLayout;
+
         public Viewholder(@NonNull View itemView) {
             super(itemView);
+
+            // background
+            backgroundLayout = itemView.findViewById(R.id.constraintLayout_background);
+
         }
     }
 }

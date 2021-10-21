@@ -12,12 +12,15 @@
     android:id="@+id/home_recyclerview_bg">
 
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="8dp"
+        android:outlineAmbientShadowColor="@android:color/transparent"
+        android:outlineSpotShadowColor="@android:color/transparent"
+        app:cardCornerRadius="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_background"
             android:background="@color/second_color"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
