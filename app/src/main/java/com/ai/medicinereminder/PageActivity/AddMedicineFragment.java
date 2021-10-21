@@ -1,10 +1,16 @@
  package com.ai.medicinereminder.PageActivity;
 
+import static com.ai.medicinereminder.Notification.NotificationClass.Medicine_Channel;
+
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
@@ -26,6 +32,7 @@ import android.widget.Toast;
 
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
+import com.ai.medicinereminder.Notification.NotificationModifier;
 import com.ai.medicinereminder.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
@@ -43,6 +50,9 @@ import java.util.List;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+     // notification
+     private NotificationManagerCompat notificationManagerCompat;
 
     // room database
     private MainDatabase mainDatabase;
@@ -154,6 +164,9 @@ import java.util.List;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_medicine, container, false);
+
+        // notification
+        notificationManagerCompat = NotificationManagerCompat.from(getActivity());
 
         // room database
         mainDatabase = MainDatabase.getInstance(getContext());
@@ -1118,13 +1131,11 @@ import java.util.List;
         // add to room database
         mainDatabase.medicineDao().insertMedicine(medicine);
 
-        List<Medicine> medicineList = new ArrayList<>();
+        // for notification
+        NotificationModifier notificationModifier = new NotificationModifier(getActivity().getApplicationContext());
+        notificationModifier.showNotification("Medicine Added", name+" added to your list");
 
-        medicineList = mainDatabase.medicineDao().getMedicineList();
-
-        for(Medicine medicine1 : medicineList){
-            Log.d("Medicine", medicine1.getName());
-        }
+        getActivity().onBackPressed();
 
     }
 

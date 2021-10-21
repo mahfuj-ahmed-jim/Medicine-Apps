@@ -30,7 +30,7 @@
             app:tabRippleColor="@color/shadow_color"
             android:backgroundTint="@color/background_color"
             app:tabIndicatorFullWidth="true"
-            app:tabIndicatorHeight="2dp"
+            app:tabIndicatorHeight="2.2dp"
             app:tabIndicatorColor="@color/main_color"
             app:tabIndicatorGravity="top"
             app:tabSelectedTextColor="@color/main_color"
