@@ -1,15 +1,11 @@
  package com.ai.medicinereminder.PageActivity;
 
-import static com.ai.medicinereminder.Notification.NotificationClass.Medicine_Channel;
 
 import android.annotation.SuppressLint;
-import android.app.Notification;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
@@ -115,7 +111,7 @@ import java.util.List;
 
     // meal
     private LinearLayout mealLayout;
-    private RadioButton beforeMealRadioButton, afterMealRadioButton;
+    private RadioButton beforeMealRadioButton, afterMealRadioButton, anyTimeRadioButton;
 
     // optional
     private LinearLayout optionalLayout;
@@ -242,6 +238,7 @@ import java.util.List;
         mealLayout = view.findViewById(R.id.layoutId_meal);
         beforeMealRadioButton = view.findViewById(R.id.radioButtonId_beforeMeal);
         afterMealRadioButton = view.findViewById(R.id.radioButtonId_afterMeal);
+        anyTimeRadioButton = view.findViewById(R.id.radioButtonId_anyTime);
 
         //  optional
         optionalLayout = view.findViewById(R.id.linearLayoutId_optional);
@@ -341,7 +338,7 @@ import java.util.List;
 
                     Toast.makeText(getActivity().getApplicationContext(), "Please select Hour or Session", Toast.LENGTH_LONG).show();
 
-                }else if(!beforeMealRadioButton.isChecked() && !afterMealRadioButton.isChecked()){
+                }else if(!beforeMealRadioButton.isChecked() && !afterMealRadioButton.isChecked() && !anyTimeRadioButton.isChecked()){
 
                     Toast.makeText(getActivity().getApplicationContext(), "Please select Consume Time", Toast.LENGTH_LONG).show();
 
@@ -920,18 +917,21 @@ import java.util.List;
         beforeMealRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 showOptionalLayout();
-
             }
         });
 
         afterMealRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 showOptionalLayout();
+            }
+        });
 
+        anyTimeRadioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOptionalLayout();
             }
         });
 
@@ -1028,7 +1028,7 @@ import java.util.List;
         // optional layout hide
         if( !(selectTypeEditText.getText().toString().equals("Select a type")) && !(nameEditText.getText().toString().equals("")) &&
                 !(totalEditText.getText().toString().equals("")) && (hourlyRadioButton.isChecked() || sessionRadioButton.isChecked()) &&
-                (beforeMealRadioButton.isChecked() || afterMealRadioButton.isChecked())){
+                (beforeMealRadioButton.isChecked() || afterMealRadioButton.isChecked() || anyTimeRadioButton.isChecked())){
 
             optionalLayout.setVisibility(View.VISIBLE);
 

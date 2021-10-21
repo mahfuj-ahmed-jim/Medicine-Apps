@@ -4,6 +4,7 @@ import static com.ai.medicinereminder.Notification.NotificationClass.Medicine_Ch
 
 import android.app.Notification;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -27,9 +28,6 @@ public class NotificationModifier {
 
         Notification notification = new NotificationCompat.Builder(context, Medicine_Channel)
                 .setSmallIcon(R.drawable.home)
-                /*.setLargeIcon(BitmapFactory.decodeResource(getActivity().getApplicationContext().getResources(),
-                        R.mipmap.ic_launcher_round))*/
-
                 .setContentTitle(title)
                 .setContentText(text)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

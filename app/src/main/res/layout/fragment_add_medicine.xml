@@ -243,383 +243,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayout_tabletQuantity"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/lightModeThirdText_color"
-                    android:text="Tablet Quantity"
-                    android:layout_marginTop="22dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </TextView>
-
-                <LinearLayout
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/background_string">
-
-                    <Button
-                        android:id="@+id/buttonId_minusButton"
-                        android:text="-"
-                        android:textStyle="bold"
-                        android:textSize="20dp"
-                        android:outlineSpotShadowColor="@android:color/transparent"
-                        android:background="@drawable/button_minus"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp">
-
-                    </Button>
-
-                    <TextView
-                        android:layout_marginHorizontal="15dp"
-                        android:id="@+id/textViewId_tablet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/lightModeText_color"
-                        android:textSize="17dp"
-                        android:text="1 Tablet">
-
-                    </TextView>
-
-                    <Button
-                        android:id="@+id/buttonId_plusButton"
-                        android:text="+"
-                        android:textSize="20dp"
-                        android:outlineSpotShadowColor="@android:color/transparent"
-                        android:background="@drawable/button_plus"
-                        android:layout_marginRight="10dp"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp">
-
-                    </Button>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayoutId_syrupQuantity"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/lightModeThirdText_color"
-                    android:text="Syrup Quantity"
-                    android:layout_marginTop="22dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </TextView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="13dp"
-                    android:orientation="horizontal">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayoutId_syrup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/background_string">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="120dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="15dp"
-                            android:backgroundTint="@color/background_color"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="center_vertical"
-                            android:hint="Total"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="5dp"
-                            android:paddingRight="15dp"
-                            android:paddingBottom="2dp"
-                            android:textColorHint="@color/lightModeThirdText_color"
-                            app:counterOverflowTextColor="@color/lightModeThirdText_color"
-                            app:hintTextColor="@color/lightModeThirdText_color"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.405"
-                            tools:ignore="MissingConstraints">
-
-                            <EditText
-                                android:id="@+id/editTextId_syrup"
-                                android:layout_width="55dp"
-                                android:layout_height="match_parent"
-                                android:background="@android:color/transparent"
-                                android:backgroundTint="@color/background_color"
-                                android:inputType="number"
-                                android:clickable="false"
-                                android:focusable="true"
-                                android:focusableInTouchMode="true"
-                                android:fontFamily="@font/poppins_regular"
-                                android:gravity="center_vertical"
-                                android:singleLine="true"
-                                android:textColor="@color/lightModeText_color"
-                                android:textCursorDrawable="@drawable/text_cursor">
-
-                            </EditText>
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <TextView
-                            android:id="@+id/textView_syrup"
-                            android:layout_marginRight="18dp"
-                            android:paddingTop="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="center"
-                            android:textColor="@color/lightModeText_color"
-                            android:text="mm"
-                            android:textSize="17dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                        </TextView>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
-                        android:background="@drawable/background_string">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/textInputLayout3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="15dp"
-                            android:backgroundTint="@color/background_color"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="center_vertical"
-                            android:hint="Select"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="5dp"
-                            android:paddingRight="15dp"
-                            android:paddingBottom="2dp"
-                            android:textColorHint="@color/lightModeThirdText_color"
-                            app:counterOverflowTextColor="@color/lightModeThirdText_color"
-                            app:hintTextColor="@color/lightModeThirdText_color"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/layoutId_syrupSelect"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.405"
-                            tools:ignore="MissingConstraints">
-
-                            <EditText
-                                android:id="@+id/editTextId_syrupSelect"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@color/background_color"
-                                android:clickable="false"
-                                android:focusable="true"
-                                android:focusableInTouchMode="true"
-                                android:fontFamily="@font/poppins_regular"
-                                android:gravity="center_vertical"
-                                android:paddingRight="42dp"
-                                android:singleLine="true"
-                                android:text="mm"
-                                android:textColor="@color/lightModeText_color"
-                                android:textCursorDrawable="@drawable/text_cursor">
-
-                            </EditText>
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <LinearLayout
-                            android:id="@+id/layoutId_syrupSelect"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:alpha="0.7"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:visibility="visible"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintDimensionRatio="w,1:1"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <Button
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                android:background="@drawable/icon_arrow_down_24">
-
-                            </Button>
-
-                        </LinearLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/constraintLayoutId_syrupSelect"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent">
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout_dropperQuantity"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/lightModeThirdText_color"
-                    android:text="Dropper Quantity"
-                    android:layout_marginTop="22dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </TextView>
-
-                <LinearLayout
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/background_string">
-
-                    <Button
-                        android:id="@+id/buttonId_dropperMinusButton"
-                        android:text="-"
-                        android:textStyle="bold"
-                        android:textSize="20dp"
-                        android:outlineSpotShadowColor="@android:color/transparent"
-                        android:background="@drawable/button_minus"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp">
-
-                    </Button>
-
-                    <TextView
-                        android:layout_marginHorizontal="15dp"
-                        android:id="@+id/textViewId_dropper"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/lightModeText_color"
-                        android:textSize="17dp"
-                        android:text="1 Drop">
-
-                    </TextView>
-
-                    <Button
-                        android:id="@+id/buttonId_dropperPlusButton"
-                        android:text="+"
-                        android:textSize="20dp"
-                        android:outlineSpotShadowColor="@android:color/transparent"
-                        android:background="@drawable/button_plus"
-                        android:layout_marginRight="10dp"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp">
-
-                    </Button>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout_injectionQuantity"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/lightModeThirdText_color"
-                    android:text="Injetion Quantity"
-                    android:layout_marginTop="22dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </TextView>
-
-                <LinearLayout
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/background_string">
-
-                    <Button
-                        android:id="@+id/buttonId_injectionMinusButton"
-                        android:text="-"
-                        android:textStyle="bold"
-                        android:textSize="20dp"
-                        android:outlineSpotShadowColor="@android:color/transparent"
-                        android:background="@drawable/button_minus"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp">
-
-                    </Button>
-
-                    <TextView
-                        android:layout_marginHorizontal="15dp"
-                        android:id="@+id/textViewId_injection"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/lightModeText_color"
-                        android:textSize="17dp"
-                        android:text="1 injection">
-
-                    </TextView>
-
-                    <Button
-                        android:id="@+id/buttonId_injectionPlusButton"
-                        android:text="+"
-                        android:textSize="20dp"
-                        android:outlineSpotShadowColor="@android:color/transparent"
-                        android:background="@drawable/button_plus"
-                        android:layout_marginRight="10dp"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp">
-
-                    </Button>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -998,6 +621,383 @@
                         android:paddingHorizontal="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_tabletQuantity"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="Tablet Quantity"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_string">
+
+                    <Button
+                        android:id="@+id/buttonId_minusButton"
+                        android:text="-"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_minus"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                    <TextView
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/textViewId_tablet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="17dp"
+                        android:text="1 Tablet">
+
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/buttonId_plusButton"
+                        android:text="+"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_plus"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutId_syrupQuantity"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="Syrup Quantity"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayoutId_syrup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_string">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="15dp"
+                            android:backgroundTint="@color/background_color"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center_vertical"
+                            android:hint="Total"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="2dp"
+                            android:textColorHint="@color/lightModeThirdText_color"
+                            app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                            app:hintTextColor="@color/lightModeThirdText_color"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.405"
+                            tools:ignore="MissingConstraints">
+
+                            <EditText
+                                android:id="@+id/editTextId_syrup"
+                                android:layout_width="55dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:backgroundTint="@color/background_color"
+                                android:inputType="number"
+                                android:clickable="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:gravity="center_vertical"
+                                android:singleLine="true"
+                                android:textColor="@color/lightModeText_color"
+                                android:textCursorDrawable="@drawable/text_cursor">
+
+                            </EditText>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:id="@+id/textView_syrup"
+                            android:layout_marginRight="18dp"
+                            android:paddingTop="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:textColor="@color/lightModeText_color"
+                            android:text="mm"
+                            android:textSize="17dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </TextView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/background_string">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputLayout3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:backgroundTint="@color/background_color"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center_vertical"
+                            android:hint="Select"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="15dp"
+                            android:paddingBottom="2dp"
+                            android:textColorHint="@color/lightModeThirdText_color"
+                            app:counterOverflowTextColor="@color/lightModeThirdText_color"
+                            app:hintTextColor="@color/lightModeThirdText_color"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/layoutId_syrupSelect"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.405"
+                            tools:ignore="MissingConstraints">
+
+                            <EditText
+                                android:id="@+id/editTextId_syrupSelect"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/background_color"
+                                android:clickable="false"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:fontFamily="@font/poppins_regular"
+                                android:gravity="center_vertical"
+                                android:paddingRight="42dp"
+                                android:singleLine="true"
+                                android:text="mm"
+                                android:textColor="@color/lightModeText_color"
+                                android:textCursorDrawable="@drawable/text_cursor">
+
+                            </EditText>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutId_syrupSelect"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:alpha="0.7"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:visibility="visible"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="w,1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <Button
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:background="@drawable/icon_arrow_down_24">
+
+                            </Button>
+
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/constraintLayoutId_syrupSelect"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_dropperQuantity"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="Dropper Quantity"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_string">
+
+                    <Button
+                        android:id="@+id/buttonId_dropperMinusButton"
+                        android:text="-"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_minus"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                    <TextView
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/textViewId_dropper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="17dp"
+                        android:text="1 Drop">
+
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/buttonId_dropperPlusButton"
+                        android:text="+"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_plus"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_injectionQuantity"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/lightModeThirdText_color"
+                    android:text="Injection Quantity"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_string">
+
+                    <Button
+                        android:id="@+id/buttonId_injectionMinusButton"
+                        android:text="-"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_minus"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
+
+                    </Button>
+
+                    <TextView
+                        android:layout_marginHorizontal="15dp"
+                        android:id="@+id/textViewId_injection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/lightModeText_color"
+                        android:textSize="17dp"
+                        android:text="1 injection">
+
+                    </TextView>
+
+                    <Button
+                        android:id="@+id/buttonId_injectionPlusButton"
+                        android:text="+"
+                        android:textSize="20dp"
+                        android:outlineSpotShadowColor="@android:color/transparent"
+                        android:background="@drawable/button_plus"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp">
 
                     </Button>
 

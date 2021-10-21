@@ -9,303 +9,113 @@
     android:layout_marginBottom="20dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true"
-    android:id="@+id/home_recyclerview_bg"
-    android:background="@drawable/background_home_search">
+    android:id="@+id/home_recyclerview_bg">
 
-        <LinearLayout
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/second_color"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_weight="0.2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/home_medicineName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:layout_marginHorizontal="14dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="Montine 5 mg"
-                        android:textColor="@color/lightModeSecondText_color"
-                        android:textStyle="bold"
-                        android:textSize="19dp">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/home_medicineDaily"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="14dp"
-                        android:text="Daily 3 times"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/lightModeSecondText_color"
-                        android:textSize="14dp">
-
-                    </TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="0.3"
-                    android:layout_marginRight="20dp"
-                    android:gravity="center_vertical|end"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/home_ConsumeTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="5dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="After Meal"
-                        android:textColor="@color/lightModeSecondText_color"
-                        android:textSize="14dp">
-
-                    </TextView>
-
-                    <ImageView
-                        android:layout_marginLeft="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/dinner">
-
-                    </ImageView>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="23dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="24dp"
-                            android:src="@drawable/ellipse_2">
-
-                        </ImageView>
+                        android:layout_weight="0.2"
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/home_Morning"
+                            android:id="@+id/home_medicineName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="29dp"
-                            android:layout_marginTop="21dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:layout_marginTop="14dp"
                             android:fontFamily="@font/poppins_regular"
-                            android:text="06 : 00 PM "
+                            android:text="Montine 5 mg"
                             android:textColor="@color/lightModeSecondText_color"
-                            android:textSize="14dp">
+                            android:textSize="19dp"
+                            android:textStyle="bold">
 
                         </TextView>
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="28.5dp"
-                        android:layout_marginTop="-10.5dp"
-                        android:orientation="vertical">
-
-                        <View
-                            android:layout_width="1.5dp"
-                            android:layout_height="29dp"
-                            android:layout_marginTop="2.7dp"
-                            android:background="@color/main_color" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="23dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_ellipse_3">
-
-                        </ImageView>
-
                         <TextView
-                            android:id="@+id/home_Noon"
+                            android:id="@+id/home_medicineDaily"
+                            android:layout_marginTop="2dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="-2dp"
-                            android:layout_marginLeft="29dp"
+                            android:layout_marginHorizontal="14dp"
                             android:fontFamily="@font/poppins_regular"
+                            android:text="Daily 3 times"
                             android:textColor="@color/lightModeSecondText_color"
-                            android:text="06 : 00 PM "
-                            android:textSize="14dp">
+                            android:textSize="15dp">
 
                         </TextView>
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:gravity="end"
+                        android:orientation="vertical"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="28.5dp"
-                        android:layout_marginTop="-13dp"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content">
 
-                        <View
-                            android:layout_width="1.5dp"
-                            android:layout_height="29dp"
-                            android:layout_marginTop="2.7dp"
-                            android:background="@color/main_color" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="23dp">
-
-                        <ImageView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/icon_ellipse_3">
+                            android:layout_marginTop="20dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_weight="0.3"
+                            android:gravity="center_vertical|end"
+                            android:orientation="horizontal">
 
-                        </ImageView>
+                            <TextView
+                                android:id="@+id/home_ConsumeTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="5dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="After Meal"
+                                android:textColor="@color/lightModeSecondText_color"
+                                android:textSize="15dp">
+
+                            </TextView>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:src="@drawable/dinner">
+
+                            </ImageView>
+
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/home_Afternoon"
+                            android:textSize="15dp"
+                            android:layout_marginTop="2dp"
+                            android:textColor="@color/lightModeSecondText_color"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginRight="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="06 : 00 PM "
-                            android:layout_marginTop="-2dp"
-                            android:layout_marginLeft="29dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:textSize="14dp"
-                            android:textColor="@color/lightModeSecondText_color">
+                            android:text="1 tablet">
 
                         </TextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="28.5dp"
-                        android:layout_marginTop="-13dp"
-                        android:orientation="vertical">
-
-                        <View
-                            android:layout_width="1.5dp"
-                            android:layout_height="29dp"
-                            android:layout_marginTop="2.7dp"
-                            android:background="@color/main_color" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="23dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_ellipse_3">
-
-                        </ImageView>
-
-                        <TextView
-                            android:id="@+id/home_Evening"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="-2dp"
-                            android:layout_marginLeft="29dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="06 : 00 PM "
-                            android:textSize="14dp"
-                            android:textColor="@color/lightModeSecondText_color">
-
-                        </TextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="28.5dp"
-                        android:layout_marginTop="-13dp"
-                        android:orientation="vertical">
-
-                        <View
-                            android:layout_width="1.5dp"
-                            android:layout_height="29dp"
-                            android:layout_marginTop="2.7dp"
-                            android:background="@color/main_color" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="23dp">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_ellipse_3">
-
-                        </ImageView>
-
-                        <TextView
-                            android:id="@+id/home_Night"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="-2dp"
-                            android:layout_marginLeft="29dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="06 : 00 PM "
-                            android:textSize="14dp"
-                            android:textColor="@color/lightModeSecondText_color">
-
-                        </TextView>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="14dp">
 
                     </LinearLayout>
 
@@ -313,22 +123,261 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/home_medicineTypeImage"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="130dp"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/icon_tablet">
+                        android:orientation="vertical">
 
-                    </ImageView>
+                        <LinearLayout
+                            android:id="@+id/linearLayout_morning"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="23dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView_morningImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="24dp"
+                                android:src="@drawable/ellipse_2">
+
+                            </ImageView>
+
+                            <TextView
+                                android:id="@+id/textView_morningTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="29dp"
+                                android:layout_marginTop="21dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="06 : 00 PM "
+                                android:textColor="@color/lightModeSecondText_color"
+                                android:textSize="14dp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_noonStripe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="28.5dp"
+                            android:layout_marginTop="-10.5dp"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="1.5dp"
+                                android:layout_height="29dp"
+                                android:layout_marginTop="2.7dp"
+                                android:background="@color/main_color" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_noon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="23dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView_noonImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_ellipse_3">
+
+                            </ImageView>
+
+                            <TextView
+                                android:id="@+id/textView_noonTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="29dp"
+                                android:layout_marginTop="-2dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="06 : 00 PM "
+                                android:textColor="@color/lightModeSecondText_color"
+                                android:textSize="14dp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_afternoonStripe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="28.5dp"
+                            android:layout_marginTop="-13dp"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="1.5dp"
+                                android:layout_height="29dp"
+                                android:layout_marginTop="2.7dp"
+                                android:background="@color/main_color" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_afternoon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="23dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView_afternoonImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_ellipse_3">
+
+                            </ImageView>
+
+                            <TextView
+                                android:id="@+id/textView_afternoonTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="29dp"
+                                android:layout_marginTop="-2dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="06 : 00 PM "
+                                android:textColor="@color/lightModeSecondText_color"
+                                android:textSize="14dp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_evenStripe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="28.5dp"
+                            android:layout_marginTop="-13dp"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="1.5dp"
+                                android:layout_height="29dp"
+                                android:layout_marginTop="2.7dp"
+                                android:background="@color/main_color" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_evening"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="23dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView_eveningImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_ellipse_3">
+
+                            </ImageView>
+
+                            <TextView
+                                android:id="@+id/textView_eveningTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="29dp"
+                                android:layout_marginTop="-2dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="06 : 00 PM "
+                                android:textColor="@color/lightModeSecondText_color"
+                                android:textSize="14dp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_nightStripe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="28.5dp"
+                            android:layout_marginTop="-13dp"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="1.5dp"
+                                android:layout_height="29dp"
+                                android:layout_marginTop="2.7dp"
+                                android:background="@color/main_color" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linearLayout_night"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="23dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView_nightImage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_ellipse_3">
+
+                            </ImageView>
+
+                            <TextView
+                                android:id="@+id/textView_nightTime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="29dp"
+                                android:layout_marginTop="-2dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="06 : 00 PM "
+                                android:textColor="@color/lightModeSecondText_color"
+                                android:textSize="14dp">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="14dp">
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <ImageView
+                            android:id="@+id/home_medicineTypeImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="25dp"
+                            android:src="@drawable/icon_tablet">
+
+                        </ImageView>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

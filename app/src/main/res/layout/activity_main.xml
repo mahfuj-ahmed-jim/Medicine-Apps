@@ -23,6 +23,7 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayoutId"
+            app:tabTextAppearance="@style/CustomTabLayout"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             android:layout_width="match_parent"

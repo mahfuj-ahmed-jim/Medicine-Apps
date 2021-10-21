@@ -17,6 +17,7 @@ public class NotificationClass extends Application {
     }
 
     private void createNotificationChannel() {
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel signInChannel = new NotificationChannel(
                     Medicine_Channel
@@ -29,6 +30,7 @@ public class NotificationClass extends Application {
 
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(signInChannel);
+
         }
     }
 

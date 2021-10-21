@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(homeFragment, "Home");
         viewPagerAdapter.addFragment(medicineFragment, "Medicine");
         viewPagerAdapter.addFragment(historyFragment, "History");
-        viewPagerAdapter.addFragment(settingsFragment, "Settings");
+        viewPagerAdapter.addFragment(settingsFragment, "More");
 
         viewPager.setAdapter(viewPagerAdapter);
 
