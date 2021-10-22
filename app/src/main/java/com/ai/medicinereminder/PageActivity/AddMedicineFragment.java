@@ -420,11 +420,18 @@ import java.util.List;
         totalEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalEditText.requestFocus();
-                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().getApplicationContext().INPUT_METHOD_SERVICE);
-                imm.showSoftInput(totalEditText, InputMethodManager.SHOW_FORCED);
-
                 nestedScrollView.smoothScrollTo(0, totalLayout.getBottom()+60);
+            }
+        });
+
+        totalEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if(hasFocus){
+                    nestedScrollView.smoothScrollTo(0, totalLayout.getBottom()+60);
+                }
+
             }
         });
 
