@@ -429,11 +429,11 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Medicine based on"
+                android:text="Sessions"
                 android:textColor="@color/lightModeThirdText_color">
 
             </TextView>
-
+<!--
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
@@ -537,10 +537,9 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </LinearLayout> -->
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="5dp"
                 android:orientation="vertical"
@@ -637,7 +636,7 @@
                 <TextView
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/lightModeThirdText_color"
-                    android:text="Tablet Quantity"
+                    android:text="Tablet Quantity (Per session)"
                     android:layout_marginTop="22dp"
                     android:layout_marginLeft="13dp"
                     android:layout_width="match_parent"
@@ -704,7 +703,7 @@
                 <TextView
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/lightModeThirdText_color"
-                    android:text="Syrup Quantity"
+                    android:text="Syrup Quantity (Per session)"
                     android:layout_marginTop="22dp"
                     android:layout_marginLeft="13dp"
                     android:layout_width="match_parent"
@@ -880,7 +879,7 @@
                 <TextView
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/lightModeThirdText_color"
-                    android:text="Dropper Quantity"
+                    android:text="Dropper Quantity (Per session)"
                     android:layout_marginTop="22dp"
                     android:layout_marginLeft="13dp"
                     android:layout_width="match_parent"
@@ -947,7 +946,7 @@
                 <TextView
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/lightModeThirdText_color"
-                    android:text="Injection Quantity"
+                    android:text="Injection Quantity (Per session)"
                     android:layout_marginTop="22dp"
                     android:layout_marginLeft="13dp"
                     android:layout_width="match_parent"

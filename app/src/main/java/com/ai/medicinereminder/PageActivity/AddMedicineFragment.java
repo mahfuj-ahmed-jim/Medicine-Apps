@@ -218,15 +218,15 @@ import java.util.List;
         injectionPlusButton = view.findViewById(R.id.buttonId_injectionPlusButton);
         injectionMinusButton = view.findViewById(R.id.buttonId_injectionMinusButton);
 
-        // hourly
+        /*// hourly
         hourlyRadioButton = view.findViewById(R.id.radioButtonId_hourly);
         hourlyLayout = view.findViewById(R.id.linearLayout_hourly);
         hourlyTextView = view.findViewById(R.id.textViewId_hourly);
         hourlyPlusButton = view.findViewById(R.id.buttonId_hourlyPlusButton);
-        hourlyMinusButton = view.findViewById(R.id.buttonId_horulyMinusButton);
+        hourlyMinusButton = view.findViewById(R.id.buttonId_horulyMinusButton);*/
 
         // session
-        sessionRadioButton = view.findViewById(R.id.radioButtonId_session);
+        //sessionRadioButton = view.findViewById(R.id.radioButtonId_session);
         sessionLayout = view.findViewById(R.id.linearLayout_SeasonWise);
         morningButton = view.findViewById(R.id.buttonId_morningButton);
         noonButton = view.findViewById(R.id.buttonId_noonButton);
@@ -334,11 +334,15 @@ import java.util.List;
 
                     }
 
-                }else if(!hourlyRadioButton.isChecked() && !sessionRadioButton.isChecked()){
+                }/*else if(!hourlyRadioButton.isChecked() && !sessionRadioButton.isChecked()){
 
                     Toast.makeText(getActivity().getApplicationContext(), "Please select Hour or Session", Toast.LENGTH_LONG).show();
 
                 }else if(!beforeMealRadioButton.isChecked() && !afterMealRadioButton.isChecked() && !anyTimeRadioButton.isChecked()){
+
+                    Toast.makeText(getActivity().getApplicationContext(), "Please select Consume Time", Toast.LENGTH_LONG).show();
+
+                }*/else if(morning==false && noon==false && afternoon==false && evening==false && night==false){
 
                     Toast.makeText(getActivity().getApplicationContext(), "Please select Consume Time", Toast.LENGTH_LONG).show();
 
@@ -756,7 +760,7 @@ import java.util.List;
 
         // hourly start
 
-        hourlyRadioButton.setOnClickListener(new View.OnClickListener() {
+        /*hourlyRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -804,13 +808,13 @@ import java.util.List;
                 }
 
             }
-        });
+        });*/
 
         // hourly end
 
         // session start
 
-        sessionRadioButton.setOnClickListener(new View.OnClickListener() {
+        /*sessionRadioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -822,7 +826,7 @@ import java.util.List;
                 mealLayout.setVisibility(View.VISIBLE);
 
             }
-        });
+        });*/
 
         morningButton.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -837,6 +841,7 @@ import java.util.List;
                     morningButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
                     morningButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
                     morning = true;
+                    mealLayout.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -854,6 +859,7 @@ import java.util.List;
                     noonButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
                     noonButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
                     noon = true;
+                    mealLayout.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -871,6 +877,7 @@ import java.util.List;
                     afternoonButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
                     afternoonButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
                     afternoon = true;
+                    mealLayout.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -888,6 +895,7 @@ import java.util.List;
                     eveningButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
                     eveningButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
                     evening = true;
+                    mealLayout.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -905,6 +913,7 @@ import java.util.List;
                     nightButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
                     nightButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
                     night = true;
+                    mealLayout.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -992,7 +1001,7 @@ import java.util.List;
         dropperLayout.setVisibility(View.GONE);
         injectionLayout.setVisibility(View.GONE);
         optionalLayout.setVisibility(View.GONE);
-        hourlyLayout.setVisibility(View.GONE);
+        //hourlyLayout.setVisibility(View.GONE);
         mealLayout.setVisibility(View.GONE);
 
     }
@@ -1027,7 +1036,7 @@ import java.util.List;
 
         // optional layout hide
         if( !(selectTypeEditText.getText().toString().equals("Select a type")) && !(nameEditText.getText().toString().equals("")) &&
-                !(totalEditText.getText().toString().equals("")) && (hourlyRadioButton.isChecked() || sessionRadioButton.isChecked()) &&
+                !(totalEditText.getText().toString().equals("")) /*&& (hourlyRadioButton.isChecked() || sessionRadioButton.isChecked())*/ &&
                 (beforeMealRadioButton.isChecked() || afterMealRadioButton.isChecked() || anyTimeRadioButton.isChecked())){
 
             optionalLayout.setVisibility(View.VISIBLE);
@@ -1093,20 +1102,22 @@ import java.util.List;
 
         duration = Integer.parseInt(totalEditText.getText().toString().trim());
 
-        // hourly/session
+        /*// hourly/session
         if(hourlyRadioButton.isChecked()){
             baseType = 1;
         }else{
             baseType = 2;
-        }
+        }*/
 
         totalHour = this.totalHour;
 
         // consume time
         if(beforeMealRadioButton.isChecked()){
             consumeTime = 1;
-        }else{
+        }else if(afterMealRadioButton.isChecked()){
             consumeTime = 2;
+        }else{
+            consumeTime = 3;
         }
 
         Medicine medicine = new Medicine();
@@ -1118,7 +1129,7 @@ import java.util.List;
         medicine.setSyrupType(syrupType);
         medicine.setDurationType(durationType);
         medicine.setDuration(duration);
-        medicine.setBaseType(baseType);
+        //medicine.setBaseType(baseType);
         medicine.setTotalHour(totalHour);
         medicine.setMorning(morning);
         medicine.setNoon(noon);

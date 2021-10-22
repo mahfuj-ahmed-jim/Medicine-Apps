@@ -153,7 +153,7 @@ public class Medicine implements Serializable {
     }
 
     public void setNoon(boolean noon) {
-        noon = noon;
+        this.noon = noon;
     }
 
     public boolean isAfternoon() {

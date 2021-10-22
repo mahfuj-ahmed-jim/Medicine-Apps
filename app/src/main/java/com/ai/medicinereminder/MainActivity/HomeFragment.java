@@ -26,13 +26,9 @@ public class HomeFragment extends Fragment {
     private MainDatabase mainDatabase;
 
     //RecyclerView
-    private RecyclerView MedicineRecyclerView;
-
-    //MedicineList
-    private ArrayList<Medicine> medicineList = new ArrayList<>();
-
-    //Card Adapter
-    HomeRecyclerViewAdapter RecyclerViewAdapter;
+    private RecyclerView medicineRecyclerView;
+    private List <Medicine> medicineList = new ArrayList<>();
+    HomeRecyclerViewAdapter recyclerViewAdapter;
 
     //TextView
     private TextView userName,homeQuote;
@@ -49,38 +45,34 @@ public class HomeFragment extends Fragment {
 
         mainDatabase = MainDatabase.getInstance(getContext());
 
-        MedicineRecyclerView = view.findViewById(R.id.medicineListView);
+        medicineRecyclerView = view.findViewById(R.id.medicineListView);
         userName = view.findViewById(R.id.home_userName);
         homeQuote = view.findViewById(R.id.home_quotes);
         medicineSearch = view.findViewById(R.id.home_medicineSearch);
 
         medicineList = new ArrayList<>();
 
-        // we are initializing our adapter class and passing our arraylist to it.
-        RecyclerViewAdapter = new HomeRecyclerViewAdapter(getActivity(), medicineList);
+        return view;
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
         // below line is for setting a layout manager for our recycler view.
         // here we are creating vertical list so we will provide orientation as vertical
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
+        medicineList = mainDatabase.medicineDao().getMedicineList();
+
+        // we are initializing our adapter class and passing our arraylist to it.
+        recyclerViewAdapter = new HomeRecyclerViewAdapter(getActivity(), medicineList);
+
         // in below two lines we are setting layoutmanager and adapter to our recycler view.
-        MedicineRecyclerView.setLayoutManager(linearLayoutManager);
-        MedicineRecyclerView.setAdapter(RecyclerViewAdapter);
+        medicineRecyclerView.setLayoutManager(linearLayoutManager);
+        medicineRecyclerView.setAdapter(recyclerViewAdapter);
 
+        recyclerViewAdapter.notifyDataSetChanged();
 
-        List<Medicine> List = new ArrayList<>();
-        List = mainDatabase.medicineDao().getMedicineList();
-
-        for(Medicine med : List){
-            medicineList.add(med);
-        }
-
-        RecyclerViewAdapter.notifyDataSetChanged();
-
-
-
-
-        return view;
     }
 }

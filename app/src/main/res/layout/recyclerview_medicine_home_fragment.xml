@@ -43,7 +43,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/home_medicineName"
+                            android:id="@+id/textViewId_medicineName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="15dp"
@@ -57,7 +57,7 @@
                         </TextView>
 
                         <TextView
-                            android:id="@+id/home_medicineDaily"
+                            android:id="@+id/textView_dailyTime"
                             android:layout_marginTop="2dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/home_ConsumeTime"
+                                android:id="@+id/textViewId_consumeTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="5dp"
@@ -109,6 +109,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/textView_quantity"
                             android:textSize="15dp"
                             android:layout_marginTop="2dp"
                             android:textColor="@color/lightModeSecondText_color"
@@ -146,7 +147,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="24dp"
-                                android:src="@drawable/ellipse_2">
+                                android:src="@drawable/icon_ellipse_3">
 
                             </ImageView>
 
@@ -158,7 +159,7 @@
                                 android:layout_marginTop="21dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
-                                android:textColor="@color/lightModeSecondText_color"
+                                android:textColor="@color/main_color"
                                 android:textSize="14dp">
 
                             </TextView>
@@ -204,7 +205,7 @@
                                 android:layout_marginTop="-2dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
-                                android:textColor="@color/lightModeSecondText_color"
+                                android:textColor="@color/main_color"
                                 android:textSize="14dp">
 
                             </TextView>
@@ -250,7 +251,7 @@
                                 android:layout_marginTop="-2dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
-                                android:textColor="@color/lightModeSecondText_color"
+                                android:textColor="@color/main_color"
                                 android:textSize="14dp">
 
                             </TextView>
@@ -258,7 +259,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/linearLayout_evenStripe"
+                            android:id="@+id/linearLayout_eveningStripe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="28.5dp"
@@ -296,7 +297,7 @@
                                 android:layout_marginTop="-2dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
-                                android:textColor="@color/lightModeSecondText_color"
+                                android:textColor="@color/main_color"
                                 android:textSize="14dp">
 
                             </TextView>
@@ -342,7 +343,7 @@
                                 android:layout_marginTop="-2dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
-                                android:textColor="@color/lightModeSecondText_color"
+                                android:textColor="@color/main_color"
                                 android:textSize="14dp">
 
                             </TextView>
@@ -374,6 +375,15 @@
                         </ImageView>
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/linearLayout_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="14dp"
+                    android:orientation="vertical">
 
                 </LinearLayout>
 
