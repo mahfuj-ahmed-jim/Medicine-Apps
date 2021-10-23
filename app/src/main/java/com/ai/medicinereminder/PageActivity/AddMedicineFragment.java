@@ -2,9 +2,11 @@
 
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
@@ -48,13 +50,17 @@ import java.util.List;
     private String mParam1;
     private String mParam2;
 
-     // notification
-     private NotificationManagerCompat notificationManagerCompat;
+    // notification
+    private NotificationManagerCompat notificationManagerCompat;
 
-     String medicineIdString;
+    // alert dialog
+    private AlertDialog.Builder builder;
+
+    String medicineIdString;
 
     // room database
     private MainDatabase mainDatabase;
+    private Medicine medicine = new Medicine();
 
     // buttons
     private Button addButton;
@@ -167,6 +173,9 @@ import java.util.List;
 
         // notification
         notificationManagerCompat = NotificationManagerCompat.from(getActivity());
+
+        // alert dialog
+        builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
 
         // room database
         mainDatabase = MainDatabase.getInstance(getContext());
@@ -365,6 +374,43 @@ import java.util.List;
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Setting message manually and performing action on button click
+                builder.setMessage("Do you want to delete "+medicine.getName()+"?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                mainDatabase.medicineDao().deleteMedicine(medicine);
+
+                                // for notification
+                                NotificationModifier notificationModifier = new NotificationModifier(getActivity().getApplicationContext());
+                                notificationModifier.showNotification("Medicine Deleted", medicine.getName()+" deleted from your list");
+
+                                getActivity().onBackPressed();
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                //  Action for 'NO' Button
+
+                            }
+                        });
+
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle("Delete medicine");
+                alert.show();
+
             }
         });
 
@@ -1175,8 +1221,6 @@ import java.util.List;
         }else{
 
             int medicineId = Integer.parseInt(medicineIdString);
-
-            Medicine medicine = new Medicine();
 
             List <Medicine> medicineList = mainDatabase.medicineDao().getMedicineList();
 
