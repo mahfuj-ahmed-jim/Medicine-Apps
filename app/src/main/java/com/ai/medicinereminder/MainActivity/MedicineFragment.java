@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.ai.medicinereminder.Activity.PageActivity;
+import com.ai.medicinereminder.Constant.MedicineConstant;
 import com.ai.medicinereminder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -98,6 +99,9 @@ public class MedicineFragment extends Fragment {
         addNewMedicineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                MedicineConstant medicineConstant = new MedicineConstant();
+                medicineConstant.setMedicineId(null);
 
                 Intent intent = new Intent(getActivity().getApplicationContext(), PageActivity.class);
                 intent.putExtra(getActivity().getApplicationContext().getString(R.string.activity),

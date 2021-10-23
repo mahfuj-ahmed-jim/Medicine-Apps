@@ -40,7 +40,6 @@ public class PageActivity extends AppCompatActivity {
 
         }else if(activity.equals(getApplicationContext().getString(R.string.addMedicine))){
 
-            //set fragment (log in fragment)
             selectedFragment = addMedicineFragment;
             FRAGMENT_TAG = getApplicationContext().getString(R.string.addMedicine);
 

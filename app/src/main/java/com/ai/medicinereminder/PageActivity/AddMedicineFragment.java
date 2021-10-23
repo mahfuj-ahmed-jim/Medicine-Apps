@@ -26,6 +26,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ai.medicinereminder.Constant.MedicineConstant;
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
 import com.ai.medicinereminder.Notification.NotificationModifier;
@@ -50,12 +51,15 @@ import java.util.List;
      // notification
      private NotificationManagerCompat notificationManagerCompat;
 
+     String medicineIdString;
+
     // room database
     private MainDatabase mainDatabase;
 
     // buttons
     private Button addButton;
     private Button backButton;
+    private TextView deleteButton; // text view as button
 
     // nested Scroll view
     private NestedScrollView nestedScrollView;
@@ -170,6 +174,7 @@ import java.util.List;
         // buttons
         addButton = view.findViewById(R.id.buttonId_add);
         backButton = view.findViewById(R.id.back_button_id);
+        deleteButton = view.findViewById(R.id.textViewId_delete);
 
         nestedScrollView = view.findViewById(R.id.nestedScrollView);
 
@@ -269,6 +274,7 @@ import java.util.List;
         setUpSelectMedicineTypeBottomSheet();
         setUpSelectBottomSheet();
         setUpSelectSyrupBottomSheet();
+        setUpMedicine();
 
         nameEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -1156,5 +1162,165 @@ import java.util.List;
         getActivity().onBackPressed();
 
     }
+
+     private void setUpMedicine(){
+
+        MedicineConstant medicineConstant = new MedicineConstant();
+        medicineIdString = medicineConstant.getMedicineId();
+
+        if(medicineIdString == null){
+
+            deleteButton.setVisibility(View.GONE);
+
+        }else{
+
+            int medicineId = Integer.parseInt(medicineIdString);
+
+            Medicine medicine = new Medicine();
+
+            List <Medicine> medicineList = mainDatabase.medicineDao().getMedicineList();
+
+            for(Medicine medicine1 : medicineList){
+
+                if(medicine1.getMedicineID() == medicineId){
+
+                    medicine = medicine1;
+
+                }
+
+            }
+
+            addButton.setText("Edit");
+
+            nameEditText.setText(medicine.getName());
+
+            // medicine type start
+            if(medicine.getMedicineType() == 1){
+
+                selectTypeEditText.setText("Tablet");
+                selectMedicineTypeBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                layout.setVisibility(View.GONE);
+
+                tabletLayout.setVisibility(View.VISIBLE);
+                syrupLayout.setVisibility(View.GONE);
+                dropperLayout.setVisibility(View.GONE);
+                injectionLayout.setVisibility(View.GONE);
+
+                tabletQuantityTextView.setText(medicine.getMedicineQuantity()==1?1+" Tablet"
+                        : (int)medicine.getMedicineQuantity()+" Tablets");
+
+                tabletQuantity = (int) medicine.getMedicineQuantity();
+
+            }else if(medicine.getMedicineType() == 2){
+
+                selectTypeEditText.setText("Syrup");
+                selectMedicineTypeBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                layout.setVisibility(View.GONE);
+
+                syrupLayout.setVisibility(View.VISIBLE);
+                tabletLayout.setVisibility(View.GONE);
+                dropperLayout.setVisibility(View.GONE);
+                injectionLayout.setVisibility(View.GONE);
+
+            }else if(medicine.getMedicineType() == 3){
+
+                selectTypeEditText.setText("Dropper");
+                selectMedicineTypeBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                layout.setVisibility(View.GONE);
+
+
+                dropperLayout.setVisibility(View.VISIBLE);
+                tabletLayout.setVisibility(View.GONE);
+                syrupLayout.setVisibility(View.GONE);
+                injectionLayout.setVisibility(View.GONE);
+
+                dropperTextView.setText(medicine.getMedicineQuantity()==1?1+" Drop"
+                        : (int)medicine.getMedicineQuantity()+" Drops");
+
+                dropperQuantity = (int) medicine.getMedicineQuantity();
+
+            }else{
+
+                selectTypeEditText.setText("Injection");
+                selectMedicineTypeBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                layout.setVisibility(View.GONE);
+
+                tabletLayout.setVisibility(View.GONE);
+                syrupLayout.setVisibility(View.GONE);
+                dropperLayout.setVisibility(View.GONE);
+                injectionLayout.setVisibility(View.VISIBLE);
+
+                injectionTextView.setText(medicine.getMedicineQuantity()==1?1+" Injection"
+                        : (int)medicine.getMedicineQuantity()+" Injections");
+
+                injectionQuantity = (int) medicine.getMedicineQuantity();
+
+            }
+            // medicine type end
+
+            // duration type start
+            if(medicine.getDurationType() == 1){
+                totalEditText.setText(medicine.getDuration()+"");
+                totalTextView.setText("Days");
+                selectEditText.setText("Day");
+                selectBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                layout.setVisibility(View.GONE);
+            }else{
+                totalEditText.setText(medicine.getDuration()+"");
+                totalTextView.setText("Month");
+                selectEditText.setText("Month");
+                selectBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                layout.setVisibility(View.GONE);
+            }
+            // duration type end
+
+            // start session
+            if(medicine.isMorning()){
+                morningButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
+                morningButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                morning = true;
+                mealLayout.setVisibility(View.VISIBLE);
+            }
+            if(medicine.isNoon()){
+                noonButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
+                noonButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                noon = true;
+                mealLayout.setVisibility(View.VISIBLE);
+            }
+            if(medicine.isAfternoon()){
+                afternoonButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
+                afternoonButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                afternoon = true;
+                mealLayout.setVisibility(View.VISIBLE);
+            }
+            if(medicine.isEvening()){
+                eveningButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
+                eveningButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                evening = true;
+                mealLayout.setVisibility(View.VISIBLE);
+            }
+            if(medicine.isNight()){
+                nightButton.setBackgroundDrawable(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.button));
+                nightButton.setTextColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.white));
+                night = true;
+                mealLayout.setVisibility(View.VISIBLE);
+            }
+            // stop session
+
+            // start consume time
+            if(medicine.getConsumeTime() == 1){
+                beforeMealRadioButton.setChecked(true);
+            }else if(medicine.getConsumeTime() == 2){
+                afterMealRadioButton.setChecked(true);
+            }else{
+                anyTimeRadioButton.setChecked(true);
+            }
+            // stop consume time
+
+            showOptionalLayout();
+
+        }
+
+     }
 
 }

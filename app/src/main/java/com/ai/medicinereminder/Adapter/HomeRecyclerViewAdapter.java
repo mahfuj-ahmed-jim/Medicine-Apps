@@ -2,6 +2,8 @@ package com.ai.medicinereminder.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ai.medicinereminder.Activity.PageActivity;
+import com.ai.medicinereminder.Constant.MedicineConstant;
 import com.ai.medicinereminder.Database.Medicine;
 import com.ai.medicinereminder.R;
 import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
@@ -250,6 +254,21 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         if(count==1){
             holder.bottomLayout.setVisibility(View.VISIBLE);
         }
+
+        holder.backgroundLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MedicineConstant medicineConstant = new MedicineConstant();
+                medicineConstant.setMedicineId(list.get(position).getMedicineID()+"");
+
+                Intent intent = new Intent(context, PageActivity.class);
+                intent.putExtra(context.getString(R.string.activity),
+                        context.getString(R.string.addMedicine));
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 
