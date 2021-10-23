@@ -139,7 +139,7 @@
                             android:id="@+id/linearLayout_morning"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="23dp"
+                            android:layout_marginLeft="17dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -155,7 +155,7 @@
                                 android:id="@+id/textView_morningTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="29dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="21dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
@@ -170,7 +170,7 @@
                             android:id="@+id/linearLayout_noonStripe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="28.5dp"
+                            android:layout_marginLeft="22.5dp"
                             android:layout_marginTop="-10.5dp"
                             android:orientation="vertical">
 
@@ -186,7 +186,7 @@
                             android:id="@+id/linearLayout_noon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="23dp"
+                            android:layout_marginLeft="17dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -201,7 +201,7 @@
                                 android:id="@+id/textView_noonTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="29dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="-2dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
@@ -216,7 +216,7 @@
                             android:id="@+id/linearLayout_afternoonStripe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="28.5dp"
+                            android:layout_marginLeft="22.5dp"
                             android:layout_marginTop="-13dp"
                             android:orientation="vertical">
 
@@ -232,7 +232,7 @@
                             android:id="@+id/linearLayout_afternoon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="23dp"
+                            android:layout_marginLeft="17dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -247,7 +247,7 @@
                                 android:id="@+id/textView_afternoonTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="29dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="-2dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
@@ -262,7 +262,7 @@
                             android:id="@+id/linearLayout_eveningStripe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="28.5dp"
+                            android:layout_marginLeft="22.5dp"
                             android:layout_marginTop="-13dp"
                             android:orientation="vertical">
 
@@ -278,7 +278,7 @@
                             android:id="@+id/linearLayout_evening"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="23dp"
+                            android:layout_marginLeft="17dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -293,7 +293,7 @@
                                 android:id="@+id/textView_eveningTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="29dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="-2dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
@@ -308,7 +308,7 @@
                             android:id="@+id/linearLayout_nightStripe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="28.5dp"
+                            android:layout_marginLeft="22.5dp"
                             android:layout_marginTop="-13dp"
                             android:orientation="vertical">
 
@@ -324,7 +324,7 @@
                             android:id="@+id/linearLayout_night"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="23dp"
+                            android:layout_marginLeft="17dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -339,7 +339,7 @@
                                 android:id="@+id/textView_nightTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="29dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="-2dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "

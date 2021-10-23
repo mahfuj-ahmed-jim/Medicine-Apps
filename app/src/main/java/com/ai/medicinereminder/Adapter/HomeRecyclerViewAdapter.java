@@ -74,11 +74,11 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         holder.medicineName.setText(list.get(position).getName());
 
         // time
-        holder.morningTime.setText(this.morningTime);
-        holder.noonTime.setText(this.noonTime);
-        holder.afternoonTime.setText(this.afternoonTime);
-        holder.eveningTime.setText(this.eveningTime);
-        holder.nightTime.setText(this.nightTime);
+        holder.morningTime.setText(this.morningTime+" (Morning)");
+        holder.noonTime.setText(this.noonTime+" (Noon)");
+        holder.afternoonTime.setText(this.afternoonTime+" (Afternoon)");
+        holder.eveningTime.setText(this.eveningTime+" (Evening)");
+        holder.nightTime.setText(this.nightTime+" (Night)");
 
         if(list.get(position).getConsumeTime() == 1){
             holder.consumeTimeTextView.setText("Before meal");
