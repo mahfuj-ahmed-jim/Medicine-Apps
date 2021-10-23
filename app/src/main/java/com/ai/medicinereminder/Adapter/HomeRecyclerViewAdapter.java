@@ -63,6 +63,8 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull HomeRecyclerViewAdapter.Viewholder holder, int position) {
 
+        Log.d("Verify", list.get(position).isEvening()+"");
+
         // background color
         if(position%4 == 0){
             holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_purple));

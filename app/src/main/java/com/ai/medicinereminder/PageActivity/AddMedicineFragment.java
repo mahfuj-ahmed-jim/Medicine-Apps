@@ -1198,12 +1198,28 @@ import java.util.List;
         medicine.setConsumeTime(consumeTime);
         medicine.setDescription(description);
 
-        // add to room database
-        mainDatabase.medicineDao().insertMedicine(medicine);
-
         // for notification
         NotificationModifier notificationModifier = new NotificationModifier(getActivity().getApplicationContext());
-        notificationModifier.showNotification("Medicine Added", name+" added to your list");
+
+        if(medicineIdString == null){
+
+            // add to room database
+            mainDatabase.medicineDao().insertMedicine(medicine);
+
+            // notification
+            notificationModifier.showNotification("Medicine Added", name+" added to your list");
+
+        }else{
+
+            medicine.setMedicineID(Integer.parseInt(medicineIdString));
+
+            // update to room database
+            mainDatabase.medicineDao().updateMedicine(medicine);
+
+            // notification
+            notificationModifier.showNotification("Medicine Updated", name+" updated to your list");
+
+        }
 
         getActivity().onBackPressed();
 

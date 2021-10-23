@@ -131,6 +131,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:layout_marginTop="21dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -146,7 +147,7 @@
                                 android:id="@+id/imageView_morningImage"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="24dp"
+                                android:layout_marginTop="3dp"
                                 android:src="@drawable/icon_ellipse_3">
 
                             </ImageView>
@@ -156,7 +157,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="21dp"
                                 android:fontFamily="@font/poppins_regular"
                                 android:text="06 : 00 PM "
                                 android:textColor="@color/main_color"
