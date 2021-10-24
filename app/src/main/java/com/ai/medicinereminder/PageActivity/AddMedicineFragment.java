@@ -71,7 +71,7 @@ import java.util.List;
     private NestedScrollView nestedScrollView;
 
     // edit texts
-    private EditText nameEditText, selectTypeEditText, selectEditText, totalEditText;
+    private EditText nameEditText, selectTypeEditText, selectEditText, totalEditText, descriptionEditText;
     private ConstraintLayout selectTypeLayout, selectLayout, totalLayout;
     private TextView totalTextView, dueTimeTextView;
 
@@ -192,6 +192,7 @@ import java.util.List;
         selectTypeEditText = view.findViewById(R.id.editTextId_selectType);
         selectEditText = view.findViewById(R.id.editTextId_select);
         totalEditText = view.findViewById(R.id.editTextId_total);
+        descriptionEditText = view.findViewById(R.id.editTextId_description);
 
         totalTextView = view.findViewById(R.id.textView_total);
         dueTimeTextView = view.findViewById(R.id.textViewId_dueTime);
@@ -363,7 +364,59 @@ import java.util.List;
 
                 }else{
 
-                    saveMedicineToRoomDatabase();
+                    if(medicineIdString==null){
+
+                        //Setting message manually and performing action on button click
+                        builder.setMessage("Do you want to add "+nameEditText.getText().toString().trim()+"?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        saveMedicineToRoomDatabase();
+
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        //  Action for 'NO' Button
+
+                                    }
+                                });
+
+                        //Creating dialog box
+                        AlertDialog alert = builder.create();
+                        //Setting the title manually
+                        alert.setTitle("Add medicine");
+                        alert.show();
+
+                    }else{
+
+                        //Setting message manually and performing action on button click
+                        builder.setMessage("Do you want to edit "+nameEditText.getText().toString().trim()+"?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        saveMedicineToRoomDatabase();
+
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+
+                                        //  Action for 'NO' Button
+
+                                    }
+                                });
+
+                        //Creating dialog box
+                        AlertDialog alert = builder.create();
+                        //Setting the title manually
+                        alert.setTitle("Edit medicine");
+                        alert.show();
+
+                    }
 
                 }
 
@@ -1125,7 +1178,7 @@ import java.util.List;
         boolean evening = this.evening;
         boolean night = this.night;
         int consumeTime;
-        String description = null;
+        String description = descriptionEditText.getText().toString().isEmpty()?null:descriptionEditText.getText().toString().trim();
 
         // set value of the variables
         name = nameEditText.getText().toString().trim();
@@ -1253,6 +1306,7 @@ import java.util.List;
             addButton.setText("Edit");
 
             nameEditText.setText(medicine.getName());
+            descriptionEditText.setText(medicine.getDescription());
 
             // medicine type start
             if(medicine.getMedicineType() == 1){

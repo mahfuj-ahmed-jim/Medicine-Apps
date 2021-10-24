@@ -57,6 +57,19 @@
                         </TextView>
 
                         <TextView
+                            android:id="@+id/textView_description"
+                            android:layout_marginTop="2dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="14dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Daily 3 times"
+                            android:textColor="@color/lightModeSecondText_color"
+                            android:textSize="15dp">
+
+                        </TextView>
+
+                        <TextView
                             android:id="@+id/textView_dailyTime"
                             android:layout_marginTop="2dp"
                             android:layout_width="wrap_content"

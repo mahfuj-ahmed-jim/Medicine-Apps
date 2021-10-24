@@ -61,9 +61,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
     @SuppressLint("ResourceAsColor")
     @Override
-    public void onBindViewHolder(@NonNull HomeRecyclerViewAdapter.Viewholder holder, int position) {
-
-        Log.d("Verify", list.get(position).isEvening()+"");
+    public void onBindViewHolder(@NonNull HomeRecyclerViewAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
 
         // background color
         if(position%4 == 0){
@@ -78,6 +76,13 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
         // textView
         holder.medicineName.setText(list.get(position).getName());
+
+        if (list.get(position).getDescription() == null) {
+            holder.descriptionTextView.setVisibility(View.GONE);
+        } else {
+            holder.descriptionTextView.setText(list.get(position).getDescription());
+        }
+        ;
 
         // time
         holder.morningTime.setText(this.morningTime+" (Morning)");
@@ -247,6 +252,18 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
         }
 
+        // start stripes
+        if(list.get(position).isMorning()==false && list.get(position).isNoon()==false){
+            holder.afternoonStripe.setVisibility(View.GONE);
+        }
+        if(list.get(position).isMorning()==false && list.get(position).isNoon()==false && list.get(position).isAfternoon()==false){
+            holder.eveningStripe.setVisibility(View.GONE);
+        }
+        if(list.get(position).isMorning()==false && list.get(position).isNoon()==false && list.get(position).isAfternoon()==false && list.get(position).isEvening()==false){
+            holder.nightStripe.setVisibility(View.GONE);
+        }
+        // end stripes
+
         if (count == 1) {
             holder.dailyTime.setText("Daily " + count + " time");
         } else {
@@ -293,6 +310,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
         // textView
         private TextView medicineName;
+        private TextView descriptionTextView;
         private TextView dailyTime;
         private TextView morningTime, noonTime, afternoonTime, eveningTime, nightTime;
         private TextView consumeTimeTextView;
@@ -310,6 +328,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             // textView
             medicineName = itemView.findViewById(R.id.textViewId_medicineName);
+            descriptionTextView = itemView.findViewById(R.id.textView_description);
             dailyTime = itemView.findViewById(R.id.textView_dailyTime);
 
             morningTime = itemView.findViewById(R.id.textView_morningTime);
