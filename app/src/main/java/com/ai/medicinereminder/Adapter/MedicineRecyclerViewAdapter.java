@@ -2,6 +2,7 @@ package com.ai.medicinereminder.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,14 +15,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ai.medicinereminder.Activity.MainActivity;
 import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.Constant.MedicineConstant;
+import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
+import com.ai.medicinereminder.MainActivity.HomeFragment;
 import com.ai.medicinereminder.R;
 import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
 import com.bumptech.glide.Glide;
@@ -65,29 +70,29 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
         }
 
         // textView
-        holder.medicineName.setText(list.get(position).getName());
+        holder.medicineName.setText(filterList.get(position).getName());
 
         int count = 0;
 
         // medicine status imageview
         // morning
-        if(list.get(position).isMorning()){
+        if(filterList.get(position).isMorning()){
             count++;
         }
         // noon
-        if(list.get(position).isNoon()){
+        if(filterList.get(position).isNoon()){
             count++;
         }
         // afternoon
-        if(list.get(position).isAfternoon()){
+        if(filterList.get(position).isAfternoon()){
             count++;
         }
         // evening
-        if(!list.get(position).isEvening()){
+        if(filterList.get(position).isEvening()){
             count++;
         }
         // night
-        if(list.get(position).isNight()){
+        if(filterList.get(position).isNight()){
             count++;
         }
 
@@ -104,12 +109,67 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
             public void onClick(View v) {
 
                 MedicineConstant medicineConstant = new MedicineConstant();
-                medicineConstant.setMedicineId(list.get(position).getMedicineID()+"");
+                medicineConstant.setMedicineId(filterList.get(position).getMedicineID()+"");
 
                 Intent intent = new Intent(context, PageActivity.class);
                 intent.putExtra(context.getString(R.string.activity),
                         context.getString(R.string.addMedicine));
                 context.startActivity(intent);
+
+            }
+        });
+
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Medicine medicine = filterList.get(position);
+
+                // alert dialog
+                AlertDialog.Builder builder;
+
+                // alert dialog
+                builder = new AlertDialog.Builder(context, R.style.AlertDialogTheme);
+
+                //Setting message manually and performing action on button click
+                builder.setMessage("Do you want to delete "+medicine.getName()+"?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                try{
+
+                                    // room database
+                                    MainDatabase mainDatabase = MainDatabase.getInstance(context);
+                                    mainDatabase.medicineDao().deleteMedicine(medicine);
+
+                                    filterList.remove(medicine);
+                                    list.remove(medicine);
+                                    notifyDataSetChanged();
+
+                                    HomeRecyclerViewAdapter homeRecyclerViewAdapter = new HomeRecyclerViewAdapter(list);
+
+                                }catch (Exception e){
+
+                                    Log.d("Verify", e.getMessage());
+
+                                }
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                //  Action for 'NO' Button
+
+                            }
+                        });
+
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle("Delete medicine");
+                alert.show();
 
             }
         });
@@ -168,9 +228,9 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
                     filterList = list;
                 }else{
                     List<Medicine> listFilter = new ArrayList<>();
-                    for(Medicine user:list){
-                        if(user.getName().toLowerCase().contains(key.toLowerCase())){
-                            listFilter.add(user);
+                    for(Medicine medicine:list){
+                        if(medicine.getName().toLowerCase().contains(key.toLowerCase())){
+                            listFilter.add(medicine);
                         }
                     }
                     filterList = listFilter;

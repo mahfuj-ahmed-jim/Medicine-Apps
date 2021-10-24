@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,8 +44,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        mainDatabase = MainDatabase.getInstance(getContext());
-
         medicineRecyclerView = view.findViewById(R.id.medicineListView);
         userName = view.findViewById(R.id.home_userName);
         homeQuote = view.findViewById(R.id.home_quotes);
@@ -55,24 +54,42 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    public void setRecyclerView(){
 
         // below line is for setting a layout manager for our recycler view.
         // here we are creating vertical list so we will provide orientation as vertical
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
 
-        medicineList = mainDatabase.medicineDao().getMedicineList();
+        try{
+            mainDatabase = MainDatabase.getInstance(getContext());
+            medicineList = mainDatabase.medicineDao().getMedicineList();
 
-        // we are initializing our adapter class and passing our arraylist to it.
-        recyclerViewAdapter = new HomeRecyclerViewAdapter(getActivity(), medicineList);
+            // we are initializing our adapter class and passing our arraylist to it.
+            recyclerViewAdapter = new HomeRecyclerViewAdapter(getActivity(), medicineList);
 
-        // in below two lines we are setting layoutmanager and adapter to our recycler view.
-        medicineRecyclerView.setLayoutManager(linearLayoutManager);
-        medicineRecyclerView.setAdapter(recyclerViewAdapter);
+            // in below two lines we are setting layoutmanager and adapter to our recycler view.
+            medicineRecyclerView.setLayoutManager(linearLayoutManager);
+            medicineRecyclerView.setAdapter(recyclerViewAdapter);
 
-        recyclerViewAdapter.notifyDataSetChanged();
+            recyclerViewAdapter.notifyDataSetChanged();
+        }catch (Exception e){
+            Log.d("Verify", e.getMessage());
+        }
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setRecyclerView();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            setRecyclerView();
+        }
+    }
+
 }

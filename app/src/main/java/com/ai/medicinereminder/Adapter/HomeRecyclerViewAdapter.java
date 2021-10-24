@@ -32,11 +32,16 @@ import java.util.List;
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.Viewholder> {
 
     private Context context;
-    private List <Medicine> list;
+    private static List <Medicine> list;
 
     // shared preference
     private MedicineSharedPreference medicineSharedPreference;
     private String morningTime, noonTime, afternoonTime, eveningTime, nightTime;
+
+    public HomeRecyclerViewAdapter(List<Medicine> medicineList){
+        this.list = medicineList;
+        notifyDataSetChanged();
+    }
 
     // Constructor
     public HomeRecyclerViewAdapter(FragmentActivity context, List <Medicine> list) {

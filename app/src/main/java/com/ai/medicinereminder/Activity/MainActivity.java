@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private HistoryFragment historyFragment = new HistoryFragment();
     private SettingsFragment settingsFragment = new SettingsFragment();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
