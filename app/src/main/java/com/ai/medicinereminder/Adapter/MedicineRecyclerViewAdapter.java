@@ -147,8 +147,6 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
                                     list.remove(medicine);
                                     notifyDataSetChanged();
 
-                                    HomeRecyclerViewAdapter homeRecyclerViewAdapter = new HomeRecyclerViewAdapter(list);
-
                                 }catch (Exception e){
 
                                     Log.d("Verify", e.getMessage());

@@ -2,14 +2,18 @@ package com.ai.medicinereminder.MainActivity;
 
 import android.os.Bundle;
 
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,6 +30,9 @@ public class HomeFragment extends Fragment {
     // room database
     private MainDatabase mainDatabase;
 
+    // nested scroll view
+    private NestedScrollView nestedScrollView;
+
     //RecyclerView
     private RecyclerView medicineRecyclerView;
     private List <Medicine> medicineList = new ArrayList<>();
@@ -35,8 +42,11 @@ public class HomeFragment extends Fragment {
     private TextView userName,homeQuote;
 
     //EditText
-    private EditText medicineSearch;
+    private EditText medicineSearchEditText;
+    private CharSequence sequence = "";
 
+    // button
+    private Button corssButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,12 +54,61 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        nestedScrollView = view.findViewById(R.id.nestedScrollView);
+
         medicineRecyclerView = view.findViewById(R.id.medicineListView);
         userName = view.findViewById(R.id.home_userName);
         homeQuote = view.findViewById(R.id.home_quotes);
-        medicineSearch = view.findViewById(R.id.home_medicineSearch);
+        medicineSearchEditText = view.findViewById(R.id.editText_search);
+
+        corssButton = view.findViewById(R.id.buttonId_cross);
 
         medicineList = new ArrayList<>();
+
+        medicineSearchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                recyclerViewAdapter.getFilter().filter(s);
+                sequence = s;
+
+                if(medicineSearchEditText.getText().toString().trim().length() == 0){
+                    corssButton.setVisibility(View.GONE);
+                }else{
+                    corssButton.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        medicineSearchEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if(hasFocus){
+                    nestedScrollView.smoothScrollTo(0, medicineSearchEditText.getBottom()+1000);
+                }else{
+
+                }
+
+            }
+        });
+
+        // on click listeners
+        corssButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                medicineSearchEditText.setText("");
+            }
+        });
 
         return view;
     }

@@ -47,7 +47,7 @@ public class MedicineFragment extends Fragment {
     private LinearLayout addNewMedicineButton;
 
     // button
-    private Button backButton;
+    private Button backButton, crossButton;
 
     //RecyclerView
     private RecyclerView medicineRecyclerView;
@@ -97,6 +97,7 @@ public class MedicineFragment extends Fragment {
 
         // back button
         backButton = view.findViewById(R.id.back_button_id);
+        crossButton = view.findViewById(R.id.buttonId_cross);
 
         // recycler view
         medicineRecyclerView = view.findViewById(R.id.medicineListView);
@@ -111,6 +112,13 @@ public class MedicineFragment extends Fragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 medicineRecyclerViewAdapter.getFilter().filter(s);
                 sequence = s;
+
+                if(medicineSearchEditText.getText().toString().trim().length() == 0){
+                    crossButton.setVisibility(View.GONE);
+                }else{
+                    crossButton.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
@@ -141,6 +149,13 @@ public class MedicineFragment extends Fragment {
 
                 getActivity().overridePendingTransition(0, 0); //intent animation
 
+            }
+        });
+
+        crossButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                medicineSearchEditText.setText(""); // empty edit text
             }
         });
 

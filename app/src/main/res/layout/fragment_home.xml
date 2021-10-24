@@ -8,6 +8,7 @@
     tools:context=".MainActivity.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -100,13 +101,14 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:paddingVertical="12dp"
-                android:paddingHorizontal="12dp"
+                android:id="@+id/constraintId_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="25dp"
                 android:layout_marginTop="25dp"
-                android:background="@drawable/background_home_search">
+                android:background="@drawable/background_home_search"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="12dp">
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -120,23 +122,34 @@
                 </ImageView>
 
                 <EditText
-                    android:id="@+id/home_medicineSearch"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/editText_search"
                     android:fontFamily="@font/poppins_regular"
-                    android:hint="search your medicine"
-                    android:paddingRight="70dp"
-                    android:textColor="#303536"
+                    android:textColor="@color/main_color"
                     android:textColorHint="@color/main_color"
-                    android:textSize="18dp"
+                    android:background="@null"
+                    android:hint="search your medicine"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent">
 
                 </EditText>
+
+                <Button
+                    android:id="@+id/buttonId_cross"
+                    android:visibility="gone"
+                    android:background="@drawable/button_cross"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </Button>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

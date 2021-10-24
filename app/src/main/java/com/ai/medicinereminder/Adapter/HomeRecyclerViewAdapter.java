@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,20 +34,17 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
     private Context context;
     private static List <Medicine> list;
+    private List<Medicine> filterList;
 
     // shared preference
     private MedicineSharedPreference medicineSharedPreference;
     private String morningTime, noonTime, afternoonTime, eveningTime, nightTime;
 
-    public HomeRecyclerViewAdapter(List<Medicine> medicineList){
-        this.list = medicineList;
-        notifyDataSetChanged();
-    }
-
     // Constructor
     public HomeRecyclerViewAdapter(FragmentActivity context, List <Medicine> list) {
         this.context = context;
         this.list = list;
+        this.filterList = list;
 
         // shared preference
         medicineSharedPreference = new MedicineSharedPreference(context);
@@ -80,12 +78,12 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         }
 
         // textView
-        holder.medicineName.setText(list.get(position).getName());
+        holder.medicineName.setText(filterList.get(position).getName());
 
-        if (list.get(position).getDescription() == null) {
+        if (filterList.get(position).getDescription() == null) {
             holder.descriptionTextView.setVisibility(View.GONE);
         } else {
-            holder.descriptionTextView.setText(list.get(position).getDescription());
+            holder.descriptionTextView.setText(filterList.get(position).getDescription());
         }
         ;
 
@@ -96,9 +94,9 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         holder.eveningTime.setText(this.eveningTime+" (Evening)");
         holder.nightTime.setText(this.nightTime+" (Night)");
 
-        if(list.get(position).getConsumeTime() == 1){
+        if(filterList.get(position).getConsumeTime() == 1){
             holder.consumeTimeTextView.setText("Before meal");
-        }else if(list.get(position).getConsumeTime() == 2){
+        }else if(filterList.get(position).getConsumeTime() == 2){
             holder.consumeTimeTextView.setText("After meal");
         }else{
             holder.consumeTimeTextView.setText("Anytime");
@@ -106,31 +104,31 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
 
         // medicine quantity
-        if(list.get(position).getMedicineType() == 1){ // tablet
+        if(filterList.get(position).getMedicineType() == 1){ // tablet
 
-            holder.quantity.setText((int)list.get(position).getMedicineQuantity()>1?
-                    (int)list.get(position).getMedicineQuantity()+" Tablets" :
-                    (int)list.get(position).getMedicineQuantity()+" Tablet");
+            holder.quantity.setText((int)filterList.get(position).getMedicineQuantity()>1?
+                    (int)filterList.get(position).getMedicineQuantity()+" Tablets" :
+                    (int)filterList.get(position).getMedicineQuantity()+" Tablet");
 
-        }else if(list.get(position).getMedicineType() == 2){ // syrup
+        }else if(filterList.get(position).getMedicineType() == 2){ // syrup
 
-            holder.quantity.setText(list.get(position).getSyrupType()==1?
-                    (int)list.get(position).getMedicineQuantity()+" mm" :
-                    (int)list.get(position).getMedicineQuantity()==1?
-                            (int)list.get(position).getMedicineQuantity()+" Spoon" :
-                            (int)list.get(position).getMedicineQuantity()+" Spoons");
+            holder.quantity.setText(filterList.get(position).getSyrupType()==1?
+                    (int)filterList.get(position).getMedicineQuantity()+" mm" :
+                    (int)filterList.get(position).getMedicineQuantity()==1?
+                            (int)filterList.get(position).getMedicineQuantity()+" Spoon" :
+                            (int)filterList.get(position).getMedicineQuantity()+" Spoons");
 
-        }else if(list.get(position).getMedicineType() == 3){ // dropper
+        }else if(filterList.get(position).getMedicineType() == 3){ // dropper
 
-            holder.quantity.setText((int)list.get(position).getMedicineQuantity()>1?
-                    (int)list.get(position).getMedicineQuantity()+" Drops" :
-                    (int)list.get(position).getMedicineQuantity()+" Drop");
+            holder.quantity.setText((int)filterList.get(position).getMedicineQuantity()>1?
+                    (int)filterList.get(position).getMedicineQuantity()+" Drops" :
+                    (int)filterList.get(position).getMedicineQuantity()+" Drop");
 
         }else{ // injection
 
-            holder.quantity.setText((int)list.get(position).getMedicineQuantity()>1?
-                    (int)list.get(position).getMedicineQuantity()+" Injections" :
-                    (int)list.get(position).getMedicineQuantity()+" Injection");
+            holder.quantity.setText((int)filterList.get(position).getMedicineQuantity()>1?
+                    (int)filterList.get(position).getMedicineQuantity()+" Injections" :
+                    (int)filterList.get(position).getMedicineQuantity()+" Injection");
 
         }
 
@@ -138,11 +136,11 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
         // medicine status imageview
         // morning
-        if(!list.get(position).isMorning()){
+        if(!filterList.get(position).isMorning()){
 
             holder.morningStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.ellipse_2)
                     .into(holder.morningStatus);
 
@@ -154,7 +152,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             holder.morningStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.icon_ellipse_3)
                     .into(holder.morningStatus);
             count++;
@@ -162,11 +160,11 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         }
 
         // noon
-        if(!list.get(position).isNoon()){
+        if(!filterList.get(position).isNoon()){
 
             holder.noonStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.ellipse_2)
                     .into(holder.noonStatus);
 
@@ -178,7 +176,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             holder.morningStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.icon_ellipse_3)
                     .into(holder.noonStatus);
             count++;
@@ -186,11 +184,11 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         }
 
         // afternoon
-        if(!list.get(position).isAfternoon()){
+        if(!filterList.get(position).isAfternoon()){
 
             holder.afternoonStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.ellipse_2)
                     .into(holder.afternoonStatus);
 
@@ -202,7 +200,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             holder.afternoonStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.icon_ellipse_3)
                     .into(holder.afternoonStatus);
             count++;
@@ -210,11 +208,11 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         }
 
         // evening
-        if(!list.get(position).isEvening()){
+        if(!filterList.get(position).isEvening()){
 
             holder.eveningStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.ellipse_2)
                     .into(holder.eveningStatus);
 
@@ -226,7 +224,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             holder.eveningStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.icon_ellipse_3)
                     .into(holder.eveningStatus);
             count++;
@@ -234,11 +232,11 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         }
 
         // night
-        if(!list.get(position).isNight()){
+        if(!filterList.get(position).isNight()){
 
             holder.nightStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.ellipse_2)
                     .into(holder.nightStatus);
 
@@ -250,7 +248,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             holder.nightStatus.setBackground(null);
             Glide.with(context)
-                    .load(list.get(position).isMorning())
+                    .load(filterList.get(position).isMorning())
                     .placeholder(R.drawable.icon_ellipse_3)
                     .into(holder.nightStatus);
             count++;
@@ -258,13 +256,13 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         }
 
         // start stripes
-        if(list.get(position).isMorning()==false && list.get(position).isNoon()==false){
+        if(filterList.get(position).isMorning()==false && filterList.get(position).isNoon()==false){
             holder.afternoonStripe.setVisibility(View.GONE);
         }
-        if(list.get(position).isMorning()==false && list.get(position).isNoon()==false && list.get(position).isAfternoon()==false){
+        if(filterList.get(position).isMorning()==false && filterList.get(position).isNoon()==false && filterList.get(position).isAfternoon()==false){
             holder.eveningStripe.setVisibility(View.GONE);
         }
-        if(list.get(position).isMorning()==false && list.get(position).isNoon()==false && list.get(position).isAfternoon()==false && list.get(position).isEvening()==false){
+        if(filterList.get(position).isMorning()==false && filterList.get(position).isNoon()==false && filterList.get(position).isAfternoon()==false && filterList.get(position).isEvening()==false){
             holder.nightStripe.setVisibility(View.GONE);
         }
         // end stripes
@@ -289,7 +287,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return filterList.size();
     }
 
 
@@ -345,4 +343,34 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
         }
     }
+
+    public Filter getFilter(){
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String key = constraint.toString();
+                if(key.isEmpty()){
+                    filterList = list;
+                }else{
+                    List<Medicine> listFilter = new ArrayList<>();
+                    for(Medicine medicine:list){
+                        if(medicine.getName().toLowerCase().contains(key.toLowerCase())){
+                            listFilter.add(medicine);
+                        }
+                    }
+                    filterList = listFilter;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filterList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                filterList = (List<Medicine>)results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
 }
