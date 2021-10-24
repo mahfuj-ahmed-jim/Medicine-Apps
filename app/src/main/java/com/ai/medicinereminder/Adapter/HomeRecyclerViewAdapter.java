@@ -274,21 +274,6 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
             holder.bottomLayout.setVisibility(View.VISIBLE);
         }
 
-        holder.backgroundLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                MedicineConstant medicineConstant = new MedicineConstant();
-                medicineConstant.setMedicineId(list.get(position).getMedicineID()+"");
-
-                Intent intent = new Intent(context, PageActivity.class);
-                intent.putExtra(context.getString(R.string.activity),
-                        context.getString(R.string.addMedicine));
-                context.startActivity(intent);
-
-            }
-        });
-
     }
 
     @Override

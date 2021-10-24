@@ -32,6 +32,7 @@
         </Button>
 
         <EditText
+            android:id="@+id/editTextId_medicineSearch"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
@@ -49,21 +50,8 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButtonId"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        android:visibility="gone"
-        android:src="@drawable/icon_add"
-        android:backgroundTint="@color/main_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,32 +61,47 @@
             android:id="@+id/linearLayoutId_addNewMedicine"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:paddingTop="8dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/main_color"
-                android:textSize="40dp"
-                android:text="+"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </TextView>
+                <TextView
+                    android:paddingTop="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/main_color"
+                    android:textSize="40dp"
+                    android:text="+"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/main_color"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:text="Add new medicine"
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                </TextView>
 
-            </TextView>
+                <TextView
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/main_color"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:text="Add new medicine"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/medicineListView"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
 
