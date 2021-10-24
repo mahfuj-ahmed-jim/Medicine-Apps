@@ -27,6 +27,7 @@ import com.ai.medicinereminder.Constant.MedicineConstant;
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
 import com.ai.medicinereminder.MainActivity.HomeFragment;
+import com.ai.medicinereminder.Notification.NotificationModifier;
 import com.ai.medicinereminder.R;
 import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
 import com.bumptech.glide.Glide;
@@ -146,6 +147,10 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
                                     filterList.remove(medicine);
                                     list.remove(medicine);
                                     notifyDataSetChanged();
+
+                                    NotificationModifier notificationModifier = new NotificationModifier(context);
+                                    notificationModifier.showNotification("Medicine Deleted",
+                                            medicine.getName()+" deleted from your list");
 
                                 }catch (Exception e){
 

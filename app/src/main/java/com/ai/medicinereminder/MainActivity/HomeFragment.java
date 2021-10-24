@@ -99,7 +99,7 @@ public class HomeFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
 
                 if(hasFocus){
-                    nestedScrollView.smoothScrollTo(0, medicineSearchEditText.getBottom()+1000);
+                    nestedScrollView.smoothScrollTo(0, medicineSearchEditText.getBottom()+500);
                 }else{
 
                 }
@@ -146,7 +146,7 @@ public class HomeFragment extends Fragment {
 
             recyclerViewAdapter.notifyDataSetChanged();
         }catch (Exception e){
-            Log.d("Verify", e.getMessage());
+
         }
 
     }
