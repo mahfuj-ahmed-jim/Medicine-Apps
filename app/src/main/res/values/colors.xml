@@ -19,8 +19,8 @@
     <color name="lightModeThirdText_color">#AFAFAE</color>
 
     <!-- card color -->
-    <color name="card_yellow">#FDE8ED</color>
-    <color name="card_red">#FDFBE6</color>
+    <color name="card_yellow">#FDFBE6</color>
+    <color name="card_red">#FDE8ED</color>
     <color name="card_green">#E5FAEB</color>
     <color name="card_purple">#F0ECFA</color>
 

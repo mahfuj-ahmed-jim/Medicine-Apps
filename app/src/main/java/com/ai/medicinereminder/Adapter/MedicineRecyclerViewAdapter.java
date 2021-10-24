@@ -60,13 +60,13 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
 
         // background color
         if(position%4 == 0){
-            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_purple));
-        }else if(position%4 == 1){
-            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_green));
-        }else if(position%4 == 2){
-            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_yellow));
-        }else{
             holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_red));
+        }else if(position%4 == 1){
+            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_yellow));
+        }else if(position%4 == 2){
+            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_green));
+        }else{
+            holder.backgroundLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.color.card_purple));
         }
 
         // textView

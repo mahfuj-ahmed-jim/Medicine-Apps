@@ -1,7 +1,9 @@
 package com.ai.medicinereminder.MainActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -42,6 +45,7 @@ public class HomeFragment extends Fragment {
     private TextView userName,homeQuote;
 
     //EditText
+    private ConstraintLayout searchLayout;
     private EditText medicineSearchEditText;
     private CharSequence sequence = "";
 
@@ -60,6 +64,7 @@ public class HomeFragment extends Fragment {
         userName = view.findViewById(R.id.home_userName);
         homeQuote = view.findViewById(R.id.home_quotes);
         medicineSearchEditText = view.findViewById(R.id.editText_search);
+        searchLayout = view.findViewById(R.id.constraintId_search);
 
         corssButton = view.findViewById(R.id.buttonId_cross);
 
@@ -107,6 +112,15 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 medicineSearchEditText.setText("");
+            }
+        });
+
+        searchLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                medicineSearchEditText.requestFocus();
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(medicineSearchEditText, InputMethodManager.SHOW_IMPLICIT);
             }
         });
 

@@ -364,33 +364,41 @@ import java.util.List;
 
                 }else{
 
-                    if(medicineIdString==null){
+                    if(medicineIdString==null){ // new medicine
 
-                        //Setting message manually and performing action on button click
-                        builder.setMessage("Do you want to add "+nameEditText.getText().toString().trim()+"?")
-                                .setCancelable(false)
-                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
+                        if(checkMedicine()){
 
-                                        saveMedicineToRoomDatabase();
+                            //Setting message manually and performing action on button click
+                            builder.setMessage("Do you want to add another "+nameEditText.getText().toString().trim()+"?")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
 
-                                    }
-                                })
-                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
+                                            saveMedicineToRoomDatabase();
 
-                                        //  Action for 'NO' Button
+                                        }
+                                    })
+                                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
 
-                                    }
-                                });
+                                            //  Action for 'NO' Button
 
-                        //Creating dialog box
-                        AlertDialog alert = builder.create();
-                        //Setting the title manually
-                        alert.setTitle("Add medicine");
-                        alert.show();
+                                        }
+                                    });
 
-                    }else{
+                            //Creating dialog box
+                            AlertDialog alert = builder.create();
+                            //Setting the title manually
+                            alert.setTitle("Medicine already exists");
+                            alert.show();
+
+                        }else{
+
+                            saveMedicineToRoomDatabase();
+
+                        }
+
+                    }else{ // edit medicine
 
                         //Setting message manually and performing action on button click
                         builder.setMessage("Do you want to edit "+nameEditText.getText().toString().trim()+"?")
@@ -1434,6 +1442,25 @@ import java.util.List;
             showOptionalLayout();
 
         }
+
+     }
+
+     public boolean checkMedicine(){
+
+        boolean check = false;
+
+        List<Medicine> list = mainDatabase.medicineDao().getMedicineList();
+
+        for(Medicine medicine1 : list){
+
+            if(medicine1.getName().toLowerCase().equals(nameEditText.getText().toString().trim().toLowerCase())){
+                check = true;
+                break;
+            }
+
+        }
+
+        return check;
 
      }
 
