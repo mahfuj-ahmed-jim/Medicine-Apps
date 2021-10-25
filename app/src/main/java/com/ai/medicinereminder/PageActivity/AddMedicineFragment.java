@@ -1279,7 +1279,7 @@ import java.util.List;
 
             MedicineHistory medicineHistory = new MedicineHistory();
             medicineHistory.setMedicineID(medicineId);
-            medicineHistory.setMorning(false);
+            medicineHistory.setMorning(true);
             medicineHistory.setNoon(false);
             medicineHistory.setAfternoon(false);
             medicineHistory.setEvening(false);
@@ -1299,14 +1299,15 @@ import java.util.List;
 
             // for alarm
             MedicineHistory medicineHistory = new MedicineHistory();
-            medicineHistory.setMedicineID(Integer.parseInt(medicineIdString));
-            medicineHistory.setMorning(medicine.isMorning());
-            medicineHistory.setMorning(false);
-            medicineHistory.setNoon(false);
-            medicineHistory.setAfternoon(false);
-            medicineHistory.setEvening(false);
-            medicineHistory.setNight(false);
-            // for alarm
+
+            for(MedicineHistory medicineHistory1 : mainDatabase.medicineHistoryDao().getMedicineHistoryList()){
+
+                if(medicineHistory1.getMedicineID() == Integer.parseInt(medicineIdString)){
+                    medicineHistory = medicineHistory1;
+                    break;
+                }
+
+            }
 
             // update to room database
             mainDatabase.medicineDao().updateMedicine(medicine);

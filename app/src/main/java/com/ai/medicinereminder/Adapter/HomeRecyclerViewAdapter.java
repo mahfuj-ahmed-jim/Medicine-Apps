@@ -3,6 +3,8 @@ package com.ai.medicinereminder.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.Constant.MedicineConstant;
+import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
+import com.ai.medicinereminder.Database.MedicineHistory;
 import com.ai.medicinereminder.R;
 import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
 import com.bumptech.glide.Glide;
@@ -28,17 +32,29 @@ import com.bumptech.glide.Glide;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerViewAdapter.Viewholder> {
 
+    // context
     private Context context;
+
+    // medicine list
     private static List <Medicine> list;
     private List<Medicine> filterList;
+
+    // time
+    private int currentTime;
+    private int morning, noon, afternoon, evening, night;
 
     // shared preference
     private MedicineSharedPreference medicineSharedPreference;
     private String morningTime, noonTime, afternoonTime, eveningTime, nightTime;
+
+    // room database
+    private MainDatabase mainDatabase;
 
     // Constructor
     public HomeRecyclerViewAdapter(FragmentActivity context, List <Medicine> list) {
@@ -53,6 +69,32 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         this.afternoonTime = medicineSharedPreference.getData(3);
         this.eveningTime = medicineSharedPreference.getData(4);
         this.nightTime = medicineSharedPreference.getData(5);
+
+        // convert time to minutes
+        String morningText [] = morningTime.split(" : ");
+        String noonText [] = noonTime.split(" : ");
+        String afternoonText [] = afternoonTime.split(" : ");
+        String eveningText [] = eveningTime.split(" : ");
+        String nightText [] = nightTime.split(" : ");
+
+        this.morning = Integer.parseInt(morningText[0])*60 + Integer.parseInt(morningText[1]) +
+                (morningText[2].equals("PM")? 720:0);
+        this.noon = Integer.parseInt(noonText[0])*60 + Integer.parseInt(noonText[1]) +
+                (noonText[2].equals("PM")? 720:0);
+        this.afternoon = Integer.parseInt(afternoonText[0])*60 + Integer.parseInt(afternoonText[1]) +
+                (afternoonText[2].equals("PM")? 720:0);
+        this.evening = Integer.parseInt(eveningText[0])*60 + Integer.parseInt(eveningText[1]) +
+                (eveningText[2].equals("PM")? 720:0);
+        this.night = Integer.parseInt(nightText[0])*60 + Integer.parseInt(nightText[1]) +
+                (nightText[2].equals("PM")? 720:0);
+
+        Date currentTime = Calendar.getInstance().getTime();
+        this.currentTime = currentTime.getHours()*60 + currentTime.getMinutes();
+        // convert time to minutes
+
+        // room database
+        mainDatabase = MainDatabase.getInstance(context);
+
     }
 
     @NonNull
@@ -138,23 +180,46 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         // morning
         if(!filterList.get(position).isMorning()){
 
-            holder.morningStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.ellipse_2)
-                    .into(holder.morningStatus);
-
             holder.morningStatus.setVisibility(View.GONE);
             holder.morningTime.setVisibility(View.GONE);
             holder.noonStripe.setVisibility(View.GONE);
 
         }else{
 
-            holder.morningStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.icon_ellipse_3)
-                    .into(holder.morningStatus);
+            if(currentTime >= morning){
+
+                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+
+                    holder.morningStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.icon_ellipse_3)
+                            .into(holder.morningStatus);
+
+                }else{
+
+                    holder.morningStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.ellipse_red)
+                            .into(holder.morningStatus);
+
+                    holder.morningTime.setTextColor(ContextCompat.getColor(context, R.color.red));
+
+                }
+
+            }else{
+
+                holder.morningStatus.setBackground(null);
+                Glide.with(context)
+                        .load(filterList.get(position).isMorning())
+                        .placeholder(R.drawable.ellipse_2)
+                        .into(holder.morningStatus);
+
+                holder.morningTime.setTypeface(holder.morningTime.getTypeface(), Typeface.BOLD);
+
+            }
+
             count++;
 
         }
@@ -162,23 +227,46 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         // noon
         if(!filterList.get(position).isNoon()){
 
-            holder.noonStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.ellipse_2)
-                    .into(holder.noonStatus);
-
             holder.noonTime.setVisibility(View.GONE);
             holder.noonStripe.setVisibility(View.GONE);
             holder.noonStatus.setVisibility(View.GONE);
 
         }else{
 
-            holder.morningStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.icon_ellipse_3)
-                    .into(holder.noonStatus);
+            if(currentTime >= noon){
+
+                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+
+                    holder.noonStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.icon_ellipse_3)
+                            .into(holder.noonStatus);
+
+                }else{
+
+                    holder.noonStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.ellipse_red)
+                            .into(holder.noonStatus);
+
+                    holder.noonTime.setTextColor(ContextCompat.getColor(context, R.color.red));
+
+                }
+
+            }else{
+
+                holder.noonStatus.setBackground(null);
+                Glide.with(context)
+                        .load(filterList.get(position).isMorning())
+                        .placeholder(R.drawable.ellipse_2)
+                        .into(holder.noonStatus);
+
+                holder.noonTime.setTypeface(holder.noonTime.getTypeface(), Typeface.BOLD);
+
+            }
+
             count++;
 
         }
@@ -186,23 +274,46 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         // afternoon
         if(!filterList.get(position).isAfternoon()){
 
-            holder.afternoonStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.ellipse_2)
-                    .into(holder.afternoonStatus);
-
             holder.afternoonStripe.setVisibility(View.GONE);
             holder.afternoonTime.setVisibility(View.GONE);
             holder.afternoonStatus.setVisibility(View.GONE);
 
         }else{
 
-            holder.afternoonStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.icon_ellipse_3)
-                    .into(holder.afternoonStatus);
+            if(currentTime >= afternoon){
+
+                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+
+                    holder.afternoonStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.icon_ellipse_3)
+                            .into(holder.afternoonStatus);
+
+                }else{
+
+                    holder.afternoonStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.ellipse_red)
+                            .into(holder.afternoonStatus);
+
+                    holder.afternoonTime.setTextColor(ContextCompat.getColor(context, R.color.red));
+
+                }
+
+            }else{
+
+                holder.afternoonStatus.setBackground(null);
+                Glide.with(context)
+                        .load(filterList.get(position).isMorning())
+                        .placeholder(R.drawable.ellipse_2)
+                        .into(holder.afternoonStatus);
+
+                holder.afternoonTime.setTypeface(holder.afternoonTime.getTypeface(), Typeface.BOLD);
+
+            }
+
             count++;
 
         }
@@ -210,23 +321,46 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         // evening
         if(!filterList.get(position).isEvening()){
 
-            holder.eveningStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.ellipse_2)
-                    .into(holder.eveningStatus);
-
             holder.eveningTime.setVisibility(View.GONE);
             holder.eveningStripe.setVisibility(View.GONE);
             holder.eveningStatus.setVisibility(View.GONE);
 
         }else{
 
-            holder.eveningStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.icon_ellipse_3)
-                    .into(holder.eveningStatus);
+            if(currentTime >= evening){
+
+                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+
+                    holder.eveningStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.icon_ellipse_3)
+                            .into(holder.eveningStatus);
+
+                }else{
+
+                    holder.eveningStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.ellipse_red)
+                            .into(holder.eveningStatus);
+
+                    holder.eveningTime.setTextColor(ContextCompat.getColor(context, R.color.red));
+
+                }
+
+            }else{
+
+                holder.eveningStatus.setBackground(null);
+                Glide.with(context)
+                        .load(filterList.get(position).isMorning())
+                        .placeholder(R.drawable.ellipse_2)
+                        .into(holder.eveningStatus);
+
+                holder.eveningTime.setTypeface(holder.eveningTime.getTypeface(), Typeface.BOLD);
+
+            }
+
             count++;
 
         }
@@ -234,23 +368,46 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
         // night
         if(!filterList.get(position).isNight()){
 
-            holder.nightStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.ellipse_2)
-                    .into(holder.nightStatus);
-
             holder.nightTime.setVisibility(View.GONE);
             holder.nightStripe.setVisibility(View.GONE);
             holder.nightStatus.setVisibility(View.GONE);
 
         }else{
 
-            holder.nightStatus.setBackground(null);
-            Glide.with(context)
-                    .load(filterList.get(position).isMorning())
-                    .placeholder(R.drawable.icon_ellipse_3)
-                    .into(holder.nightStatus);
+            if(currentTime >= night){
+
+                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+
+                    holder.nightStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.icon_ellipse_3)
+                            .into(holder.nightStatus);
+
+                }else{
+
+                    holder.nightStatus.setBackground(null);
+                    Glide.with(context)
+                            .load(filterList.get(position).isMorning())
+                            .placeholder(R.drawable.ellipse_red)
+                            .into(holder.nightStatus);
+
+                    holder.nightTime.setTextColor(ContextCompat.getColor(context, R.color.red));
+
+                }
+
+            }else{
+
+                holder.nightStatus.setBackground(null);
+                Glide.with(context)
+                        .load(filterList.get(position).isMorning())
+                        .placeholder(R.drawable.ellipse_2)
+                        .into(holder.nightStatus);
+
+                holder.nightTime.setTypeface(holder.nightTime.getTypeface(), Typeface.BOLD);
+
+            }
+
             count++;
 
         }
@@ -288,6 +445,25 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
     @Override
     public int getItemCount() {
         return filterList.size();
+    }
+
+    public MedicineHistory getMedicineHistory(int id){
+
+        MedicineHistory medicineHistory = new MedicineHistory();
+
+        for(MedicineHistory med : mainDatabase.medicineHistoryDao().getMedicineHistoryList()){
+
+            if(med.getMedicineID() == id){
+
+                medicineHistory = med;
+                break;
+
+            }
+
+        }
+
+        return medicineHistory;
+
     }
 
 
