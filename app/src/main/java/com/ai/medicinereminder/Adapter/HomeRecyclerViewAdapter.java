@@ -235,7 +235,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             if(currentTime >= noon){
 
-                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+                if(getMedicineHistory(list.get(position).getMedicineID()).isNoon()){
 
                     holder.noonStatus.setBackground(null);
                     Glide.with(context)
@@ -282,7 +282,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             if(currentTime >= afternoon){
 
-                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+                if(getMedicineHistory(list.get(position).getMedicineID()).isAfternoon()){
 
                     holder.afternoonStatus.setBackground(null);
                     Glide.with(context)
@@ -329,7 +329,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             if(currentTime >= evening){
 
-                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+                if(getMedicineHistory(list.get(position).getMedicineID()).isEvening()){
 
                     holder.eveningStatus.setBackground(null);
                     Glide.with(context)
@@ -376,7 +376,7 @@ public class HomeRecyclerViewAdapter extends RecyclerView.Adapter<HomeRecyclerVi
 
             if(currentTime >= night){
 
-                if(getMedicineHistory(list.get(position).getMedicineID()).isMorning()){
+                if(getMedicineHistory(list.get(position).getMedicineID()).isNight()){
 
                     holder.nightStatus.setBackground(null);
                     Glide.with(context)
