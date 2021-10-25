@@ -12,6 +12,7 @@
         android:theme="@style/Theme.MedicineReminder">
 
         <receiver android:name=".Alarm.AlarmReceiver"></receiver>
+        <receiver android:name=".Alarm.MedicineAlarmReceiver"></receiver>
 
         <activity
             android:name=".Activity.SplashActivity"

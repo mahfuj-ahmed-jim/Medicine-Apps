@@ -20,7 +20,14 @@ public class Alarm {
     public void setAlarm(Calendar calendar, int sessionId){
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmReceiver.class);
+
+        Intent intent;
+
+        if(sessionId==6){ // for reset
+            intent = new Intent(context, MedicineAlarmReceiver.class);
+        }else{ // for session alarm
+            intent = new Intent(context, AlarmReceiver.class);
+        }
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, PendingIntent.FLAG_ONE_SHOT);
 

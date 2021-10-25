@@ -74,6 +74,11 @@ public class SplashActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, 0);
             alarm.setAlarm(calendar, 5);
 
+            // for reset
+            calendar.set(Calendar.HOUR_OF_DAY, 21);
+            calendar.set(Calendar.MINUTE, 48);
+            alarm.setAlarm(calendar, 6);
+
 
         }else{
 

@@ -1279,11 +1279,11 @@ import java.util.List;
 
             MedicineHistory medicineHistory = new MedicineHistory();
             medicineHistory.setMedicineID(medicineId);
-            medicineHistory.setMorning(medicine.isMorning());
-            medicineHistory.setNoon(medicine.isNoon());
-            medicineHistory.setAfternoon(medicine.isAfternoon());
-            medicineHistory.setEvening(medicine.isEvening());
-            medicineHistory.setNight(medicine.isNight());
+            medicineHistory.setMorning(false);
+            medicineHistory.setNoon(false);
+            medicineHistory.setAfternoon(false);
+            medicineHistory.setEvening(false);
+            medicineHistory.setNight(false);
 
             mainDatabase.medicineHistoryDao().insertMedicineHistory(medicineHistory);
             // for alarm end
@@ -1301,10 +1301,11 @@ import java.util.List;
             MedicineHistory medicineHistory = new MedicineHistory();
             medicineHistory.setMedicineID(Integer.parseInt(medicineIdString));
             medicineHistory.setMorning(medicine.isMorning());
-            medicineHistory.setNoon(medicine.isNoon());
-            medicineHistory.setAfternoon(medicine.isAfternoon());
-            medicineHistory.setEvening(medicine.isEvening());
-            medicineHistory.setNight(medicine.isNight());
+            medicineHistory.setMorning(false);
+            medicineHistory.setNoon(false);
+            medicineHistory.setAfternoon(false);
+            medicineHistory.setEvening(false);
+            medicineHistory.setNight(false);
             // for alarm
 
             // update to room database
