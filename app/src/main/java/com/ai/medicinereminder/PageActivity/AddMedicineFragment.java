@@ -31,6 +31,7 @@ import android.widget.Toast;
 import com.ai.medicinereminder.Constant.MedicineConstant;
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
+import com.ai.medicinereminder.Database.MedicineHistory;
 import com.ai.medicinereminder.Notification.NotificationModifier;
 import com.ai.medicinereminder.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -449,6 +450,12 @@ import java.util.List;
                             public void onClick(DialogInterface dialog, int id) {
 
                                 mainDatabase.medicineDao().deleteMedicine(medicine);
+
+                                // for alarm
+                                MedicineHistory medicineHistory = new MedicineHistory();
+                                medicineHistory.setMedicineID(medicine.getMedicineID());
+                                mainDatabase.medicineHistoryDao().deleteMedicineHistory(medicineHistory);
+                                // for alarm
 
                                 // for notification
                                 NotificationModifier notificationModifier = new NotificationModifier(getActivity().getApplicationContext());
@@ -1262,20 +1269,47 @@ import java.util.List;
         // for notification
         NotificationModifier notificationModifier = new NotificationModifier(getActivity().getApplicationContext());
 
-        if(medicineIdString == null){
+        if(medicineIdString == null){ // new medicine
 
             // add to room database
             mainDatabase.medicineDao().insertMedicine(medicine);
 
+            // for alarm
+            int medicineId = mainDatabase.medicineDao().getMedicineList().get(mainDatabase.medicineDao().getMedicineList().size()-1).getMedicineID();
+
+            MedicineHistory medicineHistory = new MedicineHistory();
+            medicineHistory.setMedicineID(medicineId);
+            medicineHistory.setMorning(medicine.isMorning());
+            medicineHistory.setNoon(medicine.isNoon());
+            medicineHistory.setAfternoon(medicine.isAfternoon());
+            medicineHistory.setEvening(medicine.isEvening());
+            medicineHistory.setNight(medicine.isNight());
+
+            mainDatabase.medicineHistoryDao().insertMedicineHistory(medicineHistory);
+            // for alarm end
+
+            Log.d("Verify", mainDatabase.medicineHistoryDao().getMedicineHistoryList().size()+"");
+
             // notification
             notificationModifier.showNotification("Medicine Added", name+" added to your list");
 
-        }else{
+        }else{ // update medicine
 
             medicine.setMedicineID(Integer.parseInt(medicineIdString));
 
+            // for alarm
+            MedicineHistory medicineHistory = new MedicineHistory();
+            medicineHistory.setMedicineID(Integer.parseInt(medicineIdString));
+            medicineHistory.setMorning(medicine.isMorning());
+            medicineHistory.setNoon(medicine.isNoon());
+            medicineHistory.setAfternoon(medicine.isAfternoon());
+            medicineHistory.setEvening(medicine.isEvening());
+            medicineHistory.setNight(medicine.isNight());
+            // for alarm
+
             // update to room database
             mainDatabase.medicineDao().updateMedicine(medicine);
+            mainDatabase.medicineHistoryDao().updateMedicineHistory(medicineHistory);
 
             // notification
             notificationModifier.showNotification("Medicine Updated", name+" updated to your list");

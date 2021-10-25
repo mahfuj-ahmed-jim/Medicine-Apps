@@ -15,9 +15,8 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        notificationModifier = new NotificationModifier(context);
-
-        notificationModifier.showNotification("Alarm", "Alarm");
+        /*notificationModifier = new NotificationModifier(context);
+        notificationModifier.showNotification("Alarm", "Alarm");*/
 
     }
 }

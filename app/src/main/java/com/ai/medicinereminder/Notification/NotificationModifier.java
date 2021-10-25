@@ -35,7 +35,7 @@ public class NotificationModifier {
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .build();
 
-        notificationManagerCompat.notify(1, notification);
+        notificationManagerCompat.notify((int) System.currentTimeMillis(), notification);
 
     }
 

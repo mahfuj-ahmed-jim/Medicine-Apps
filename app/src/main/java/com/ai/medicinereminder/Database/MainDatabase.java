@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Medicine.class}, version = 1, exportSchema = false)
+@Database(entities = {Medicine.class, MedicineHistory.class}, version = 1, exportSchema = false)
 public abstract class MainDatabase extends RoomDatabase {
 
     private static com.ai.medicinereminder.Database.MainDatabase INSTANCE;
@@ -28,5 +28,6 @@ public abstract class MainDatabase extends RoomDatabase {
     };*/
 
     public abstract MedicineDao medicineDao();
+    public abstract MedicineHistoryDao medicineHistoryDao();
 
 }

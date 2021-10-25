@@ -26,6 +26,7 @@ import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.Constant.MedicineConstant;
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
+import com.ai.medicinereminder.Database.MedicineHistory;
 import com.ai.medicinereminder.MainActivity.HomeFragment;
 import com.ai.medicinereminder.Notification.NotificationModifier;
 import com.ai.medicinereminder.R;
@@ -143,6 +144,12 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
                                     // room database
                                     MainDatabase mainDatabase = MainDatabase.getInstance(context);
                                     mainDatabase.medicineDao().deleteMedicine(medicine);
+
+                                    // for alarm
+                                    MedicineHistory medicineHistory = new MedicineHistory();
+                                    medicineHistory.setMedicineID(medicine.getMedicineID());
+                                    mainDatabase.medicineHistoryDao().deleteMedicineHistory(medicineHistory);
+                                    // for alarm
 
                                     filterList.remove(medicine);
                                     list.remove(medicine);
