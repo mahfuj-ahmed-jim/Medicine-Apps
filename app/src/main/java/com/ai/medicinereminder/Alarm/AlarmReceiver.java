@@ -18,6 +18,9 @@ import java.util.Date;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
+    // context
+    private Context context;
+
     // room database
     private MainDatabase mainDatabase;
     // time
@@ -33,6 +36,9 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
+        // context
+        this.context = context;
 
         // room database
         mainDatabase = MainDatabase.getInstance(context);
@@ -73,15 +79,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
                 if(medicine.isMorning()){
 
-                    Intent in = new Intent(context, PageActivity.class);
-                    in.putExtra(context.getString(R.string.activity),
-                            context.getString(R.string.alarm));
-                    in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(in);
-
-                    notificationModifier = new NotificationModifier(context);
-                    notificationModifier.showNotification("Morning Alarm", "Alarm");
-
+                    showNotification("Medicine TIme", "Time for morning medicines");
                     break;
 
                 }
@@ -90,21 +88,76 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         }else if(this.currentTime == this.noon){
 
+            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
+                if(medicine.isNoon()){
+
+                    showNotification("Medicine TIme", "Time for noon medicines");
+                    break;
+
+                }
+
+            }
 
         }else if(this.currentTime == this.afternoon){
 
+            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
+                if(medicine.isAfternoon()){
+
+                    showNotification("Medicine TIme", "Time for afternoon medicines");
+                    break;
+
+                }
+
+            }
 
         }else if(this.currentTime == this.evening){
 
+            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
+                if(medicine.isEvening()){
+
+                    showNotification("Medicine TIme", "Time for evening medicines");
+                    break;
+
+                }
+
+            }
 
         }else if(this.currentTime == this.night){
 
+            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
+                if(medicine.isNight()){
+
+                    showNotification("Medicine TIme", "Time for night medicines");
+                    break;
+
+                }
+
+            }
 
         }
+
+    }
+
+    public void showNotification(String title, String text){
+
+        notificationModifier = new NotificationModifier(context);
+        notificationModifier.showNotification(title, text);
+
+        newPage();
+
+    }
+
+    public void newPage(){
+
+        Intent in = new Intent(context, PageActivity.class);
+        in.putExtra(context.getString(R.string.activity),
+                context.getString(R.string.alarm));
+        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(in);
 
     }
 
