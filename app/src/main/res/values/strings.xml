@@ -7,6 +7,9 @@
     <!-- shared preference -->
     <string name="TimingInformation">TimingInformation</string>
     <string name="timeData">timeData</string>
+
+    <string name="AlarmInformation">AlarmInformation</string>
+
     <string name="morningTime">morningTime</string>
     <string name="noonTime">noonTime</string>
     <string name="afternoonTime">afternoonTime</string>
