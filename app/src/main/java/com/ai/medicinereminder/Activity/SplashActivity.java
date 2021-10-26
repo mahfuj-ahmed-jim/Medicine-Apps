@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.ai.medicinereminder.Alarm.Alarm;
 import com.ai.medicinereminder.R;
+import com.ai.medicinereminder.SharedPreference.AlarmSharedPreference;
 import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
 
 import java.util.Calendar;
@@ -22,6 +23,7 @@ public class SplashActivity extends AppCompatActivity {
 
     // shared preference
     private MedicineSharedPreference medicineSharedPreference;
+    private AlarmSharedPreference alarmSharedPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // shared preference
         medicineSharedPreference = new MedicineSharedPreference(getApplicationContext());
+        alarmSharedPreference = new AlarmSharedPreference(getApplicationContext());
 
         String time = medicineSharedPreference.getData(1);
 
@@ -79,6 +82,12 @@ public class SplashActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, 48);
             alarm.setAlarm(calendar, 6);
 
+            // for alarm
+            alarmSharedPreference.setData(1, true);
+            alarmSharedPreference.setData(2, true);
+            alarmSharedPreference.setData(3, true);
+            alarmSharedPreference.setData(4, true);
+            alarmSharedPreference.setData(5, true);
 
         }else{
 

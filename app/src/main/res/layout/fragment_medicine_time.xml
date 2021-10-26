@@ -146,14 +146,14 @@
                         android:textColor="@color/main_color"
                         android:textSize="16dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/switch1"
+                        app:layout_constraintEnd_toStartOf="@+id/switchId_morning"
                         app:layout_constraintTop_toTopOf="parent">
 
                     </TextView>
 
                     <Switch
                         android:checked="true"
-                        android:id="@+id/switch1"
+                        android:id="@+id/switchId_morning"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"

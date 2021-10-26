@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.ai.medicinereminder.R;
 
@@ -55,7 +56,7 @@ public class AlarmSharedPreference {
 
     public boolean getData(int sessionId){
 
-        boolean notification = false;
+        boolean notification = true;
 
         // start
         if(preferences.contains(String.valueOf(R.string.morningTime))){ // read from shared preference
@@ -88,6 +89,8 @@ public class AlarmSharedPreference {
 
         }
         // end
+
+        Log.d("Verify", "Alarm");
 
         return notification;
 

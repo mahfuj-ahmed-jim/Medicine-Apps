@@ -16,11 +16,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.ai.medicinereminder.Alarm.Alarm;
 import com.ai.medicinereminder.R;
+import com.ai.medicinereminder.SharedPreference.AlarmSharedPreference;
 import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
 
 import java.util.Calendar;
@@ -39,11 +43,15 @@ public class MedicineTimeFragment extends Fragment {
     // alarm
     private Alarm alarm;
 
-    // share preference for time
+    // share preference
     private MedicineSharedPreference medicineSharedPreference;
+    private AlarmSharedPreference alarmSharedPreference;
 
     // textViews
     private TextView morningTime, noonTime, afternoonTime,eveningTime, nightTime;
+
+    // switches
+    private Switch morningSwitch, noonSwitch, afternoonSwitch, eveningSwitch, nightSwitch;
 
     // layouts
     private ConstraintLayout morningLayout, noonLayout, afternoonLayout, eveningLayout, nightLayout;
@@ -87,6 +95,13 @@ public class MedicineTimeFragment extends Fragment {
         eveningTime = view.findViewById(R.id.textViewId_evening);
         nightTime = view.findViewById(R.id.textViewId_night);
 
+        // switches
+        morningSwitch = view.findViewById(R.id.switchId_morning);
+        noonSwitch = view.findViewById(R.id.switchId_noon);
+        afternoonSwitch = view.findViewById(R.id.switchId_afternoon);
+        eveningSwitch = view.findViewById(R.id.switchId_evening);
+        nightSwitch = view.findViewById(R.id.switchId_night);
+
         // layouts
         morningLayout = view.findViewById(R.id.constraintId_morning);
         noonLayout = view.findViewById(R.id.constraintId_noon);
@@ -94,9 +109,11 @@ public class MedicineTimeFragment extends Fragment {
         eveningLayout = view.findViewById(R.id.constraintId_evening);
         nightLayout = view.findViewById(R.id.constraintId_night);
 
-        // set up timer textViews
+        // set up timer textViews & switch
         medicineSharedPreference = new MedicineSharedPreference(getActivity().getApplicationContext());
+        alarmSharedPreference = new AlarmSharedPreference(getActivity().getApplicationContext());
         initializeTimerTextViews();
+        initializeTimerTextSwitches();
 
         morningLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +158,101 @@ public class MedicineTimeFragment extends Fragment {
             }
         });
 
+        morningSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+
+                    alarmSharedPreference.setData(1, true);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm on for morning", Toast.LENGTH_LONG).show();
+
+                }else{
+
+                    alarmSharedPreference.setData(1, false);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm off for morning", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
+        noonSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+
+                    alarmSharedPreference.setData(2, true);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm on for noon", Toast.LENGTH_LONG).show();
+
+                }else{
+
+                    alarmSharedPreference.setData(2, false);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm off for noon", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
+        afternoonSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+
+                    alarmSharedPreference.setData(3, true);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm on for afternoon", Toast.LENGTH_LONG).show();
+
+                }else{
+
+                    alarmSharedPreference.setData(3, false);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm off for afternoon", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
+        eveningSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+
+                    alarmSharedPreference.setData(4, true);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm on for evening", Toast.LENGTH_LONG).show();
+
+                }else{
+
+                    alarmSharedPreference.setData(4, false);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm off for evening", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
+        nightSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+
+                    alarmSharedPreference.setData(5, true);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm on for night", Toast.LENGTH_LONG).show();
+
+                }else{
+
+                    alarmSharedPreference.setData(5, false);
+                    Toast.makeText(getActivity().getApplicationContext(), "Alarm off for night", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+
         return view;
     }
 
@@ -153,6 +265,17 @@ public class MedicineTimeFragment extends Fragment {
         nightTime.setText(timeFormat(medicineSharedPreference.getData(5))); // night
 
     }
+
+    private void initializeTimerTextSwitches() {
+
+        morningSwitch.setChecked(alarmSharedPreference.getData(1)); // morning
+        noonSwitch.setChecked(alarmSharedPreference.getData(2)); // noon
+        afternoonSwitch.setChecked(alarmSharedPreference.getData(3)); // afternoon
+        eveningSwitch.setChecked(alarmSharedPreference.getData(4)); // evening
+        nightSwitch.setChecked(alarmSharedPreference.getData(5)); // night
+
+    }
+
 
     private String timeFormat(String time){
 
