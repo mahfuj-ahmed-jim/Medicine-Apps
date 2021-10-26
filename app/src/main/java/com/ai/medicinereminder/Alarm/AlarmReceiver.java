@@ -11,6 +11,7 @@ import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
 import com.ai.medicinereminder.Notification.NotificationModifier;
 import com.ai.medicinereminder.R;
+import com.ai.medicinereminder.SharedPreference.AlarmSharedPreference;
 import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
 
 import java.util.Calendar;
@@ -29,6 +30,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     // shared preference
     private MedicineSharedPreference medicineSharedPreference;
+    private AlarmSharedPreference alarmSharedPreference;
     private String morningTime, noonTime, afternoonTime, eveningTime, nightTime;
 
     // notification
@@ -45,6 +47,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // shared preference
         medicineSharedPreference = new MedicineSharedPreference(context);
+        alarmSharedPreference = new AlarmSharedPreference(context);
+
         this.morningTime = medicineSharedPreference.getData(1);
         this.noonTime = medicineSharedPreference.getData(2);
         this.afternoonTime = medicineSharedPreference.getData(3);
@@ -75,12 +79,16 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         if(this.currentTime == this.morning){
 
-            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
+            if(alarmSharedPreference.getData(1)){
 
-                if(medicine.isMorning()){
+                for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
-                    showNotification("Medicine TIme", "Time for morning medicines");
-                    break;
+                    if(medicine.isMorning()){
+
+                        showNotification("Medicine TIme", "Time for morning medicines");
+                        break;
+
+                    }
 
                 }
 
@@ -88,12 +96,16 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         }else if(this.currentTime == this.noon){
 
-            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
+            if(alarmSharedPreference.getData(2)){
 
-                if(medicine.isNoon()){
+                for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
-                    showNotification("Medicine TIme", "Time for noon medicines");
-                    break;
+                    if(medicine.isNoon()){
+
+                        showNotification("Medicine TIme", "Time for noon medicines");
+                        break;
+
+                    }
 
                 }
 
@@ -101,12 +113,16 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         }else if(this.currentTime == this.afternoon){
 
-            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
+            if(alarmSharedPreference.getData(3)){
 
-                if(medicine.isAfternoon()){
+                for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
-                    showNotification("Medicine TIme", "Time for afternoon medicines");
-                    break;
+                    if(medicine.isAfternoon()){
+
+                        showNotification("Medicine TIme", "Time for afternoon medicines");
+                        break;
+
+                    }
 
                 }
 
@@ -114,12 +130,16 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         }else if(this.currentTime == this.evening){
 
-            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
+            if(alarmSharedPreference.getData(4)){
 
-                if(medicine.isEvening()){
+                for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
-                    showNotification("Medicine TIme", "Time for evening medicines");
-                    break;
+                    if(medicine.isEvening()){
+
+                        showNotification("Medicine TIme", "Time for evening medicines");
+                        break;
+
+                    }
 
                 }
 
@@ -127,12 +147,16 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         }else if(this.currentTime == this.night){
 
-            for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
+            if (alarmSharedPreference.getData(5)){
 
-                if(medicine.isNight()){
+                for(Medicine medicine : mainDatabase.medicineDao().getMedicineList()){
 
-                    showNotification("Medicine TIme", "Time for night medicines");
-                    break;
+                    if(medicine.isNight()){
+
+                        showNotification("Medicine TIme", "Time for night medicines");
+                        break;
+
+                    }
 
                 }
 
