@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.ai.medicinereminder.PageActivity.AddMedicineFragment;
+import com.ai.medicinereminder.PageActivity.AlarmFragment;
 import com.ai.medicinereminder.PageActivity.MedicineTimeFragment;
 import com.ai.medicinereminder.R;
 
@@ -24,6 +25,7 @@ public class PageActivity extends AppCompatActivity {
     // fragments
     private AddMedicineFragment addMedicineFragment = new AddMedicineFragment();
     private MedicineTimeFragment medicineTimeFragment = new MedicineTimeFragment();
+    private AlarmFragment alarmFragment = new AlarmFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,11 @@ public class PageActivity extends AppCompatActivity {
 
             selectedFragment = addMedicineFragment;
             FRAGMENT_TAG = getApplicationContext().getString(R.string.addMedicine);
+
+        }else if(activity.equals(getApplicationContext().getString(R.string.alarm))){
+
+            selectedFragment = alarmFragment;
+            FRAGMENT_TAG = getApplicationContext().getString(R.string.alarm);
 
         }
 
