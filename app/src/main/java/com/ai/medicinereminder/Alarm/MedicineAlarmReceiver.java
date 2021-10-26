@@ -3,11 +3,9 @@ package com.ai.medicinereminder.Alarm;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.MedicineHistory;
-import com.ai.medicinereminder.Notification.NotificationModifier;
 
 public class MedicineAlarmReceiver extends BroadcastReceiver {
 

@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,6 @@ import com.ai.medicinereminder.Constant.MedicineConstant;
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
 import com.ai.medicinereminder.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +50,7 @@ public class MedicineFragment extends Fragment {
     //RecyclerView
     private RecyclerView medicineRecyclerView;
     private List<Medicine> medicineList = new ArrayList<>();
-    MedicineRecyclerViewAdapter medicineRecyclerViewAdapter;
+    private MedicineRecyclerViewAdapter medicineRecyclerViewAdapter;
 
     // room database
     private MainDatabase mainDatabase;

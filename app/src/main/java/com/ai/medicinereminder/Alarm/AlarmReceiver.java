@@ -3,8 +3,6 @@ package com.ai.medicinereminder.Alarm;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.Database.MainDatabase;
@@ -24,6 +22,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     // room database
     private MainDatabase mainDatabase;
+
     // time
     private int currentTime;
     private int morning, noon, afternoon, evening, night;

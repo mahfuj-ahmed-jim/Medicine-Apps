@@ -4,7 +4,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.ai.medicinereminder.R;
 
@@ -89,8 +88,6 @@ public class AlarmSharedPreference {
 
         }
         // end
-
-        Log.d("Verify", "Alarm");
 
         return notification;
 

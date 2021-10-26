@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -328,8 +327,6 @@ import java.util.List;
                     List<Medicine> medicineList = new ArrayList<>();
 
                     medicineList = mainDatabase.medicineDao().getMedicineList();
-
-                    Log.d("Medicine", medicineList.get(0).getMedicineQuantity()+"");
 
                 }else if(selectTypeEditText.getText().toString().equals("Select a type")){
 
@@ -1287,8 +1284,6 @@ import java.util.List;
 
             mainDatabase.medicineHistoryDao().insertMedicineHistory(medicineHistory);
             // for alarm end
-
-            Log.d("Verify", mainDatabase.medicineHistoryDao().getMedicineHistoryList().size()+"");
 
             // notification
             notificationModifier.showNotification("Medicine Added", name+" added to your list");

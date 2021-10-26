@@ -4,14 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Filter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,17 +18,13 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ai.medicinereminder.Activity.MainActivity;
 import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.Constant.MedicineConstant;
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
 import com.ai.medicinereminder.Database.MedicineHistory;
-import com.ai.medicinereminder.MainActivity.HomeFragment;
 import com.ai.medicinereminder.Notification.NotificationModifier;
 import com.ai.medicinereminder.R;
-import com.ai.medicinereminder.SharedPreference.MedicineSharedPreference;
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -161,7 +154,7 @@ public class MedicineRecyclerViewAdapter extends RecyclerView.Adapter<MedicineRe
 
                                 }catch (Exception e){
 
-                                    Log.d("Verify", e.getMessage());
+
 
                                 }
 

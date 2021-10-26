@@ -2,10 +2,8 @@ package com.ai.medicinereminder.SharedPreference;
 
 import static android.content.Context.MODE_PRIVATE;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.ai.medicinereminder.R;
 
