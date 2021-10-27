@@ -1276,7 +1276,7 @@ import java.util.List;
 
             MedicineHistory medicineHistory = new MedicineHistory();
             medicineHistory.setMedicineID(medicineId);
-            medicineHistory.setMorning(true);
+            medicineHistory.setMorning(false);
             medicineHistory.setNoon(false);
             medicineHistory.setAfternoon(false);
             medicineHistory.setEvening(false);

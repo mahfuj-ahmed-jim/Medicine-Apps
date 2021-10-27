@@ -44,7 +44,7 @@
         </TextView>
 
         <Button
-            android:id="@+id/textViewId_delete"
+            android:id="@+id/buttonId_update"
             android:layout_marginRight="16dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -101,6 +101,7 @@
                 </TextView>
 
                 <CheckBox
+                    android:id="@+id/checkboxId_checkAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.ai.medicinereminder.Adapter.AlarmRecyclerViewAdapter;
@@ -50,6 +53,12 @@ public class AlarmFragment extends Fragment {
     // textView
     private TextView titleTextView, checkBoxTextView;
 
+    // button
+    private Button updateButton;
+
+    // checkbox
+    private CheckBox checkALl;
+
     //RecyclerView
     private RecyclerView medicineRecyclerView;
     private List<Medicine> medicineList = new ArrayList<>();
@@ -89,17 +98,49 @@ public class AlarmFragment extends Fragment {
         titleTextView = view.findViewById(R.id.textViewId_titleText);
         checkBoxTextView = view.findViewById(R.id.textViewId_checkBox);
 
+        // button
+        updateButton = view.findViewById(R.id.buttonId_update);
+
+        // checkbox
+        checkALl = view.findViewById(R.id.checkboxId_checkAll);
+
         // recycler view
         medicineRecyclerView = view.findViewById(R.id.recyclerViewId_alarm);
 
         // set up
         setUpFragment();
-        setUpRecyclerView();
+
+        // on click listeners
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                alarmRecyclerViewAdapter.updateMedicineHistory();
+                alarmRecyclerViewAdapter.notifyDataSetChanged();
+                getActivity().finish();
+
+            }
+        });
+
+        checkALl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+                    alarmRecyclerViewAdapter.setAllChecked();
+                    alarmRecyclerViewAdapter.notifyDataSetChanged();
+                }else{
+                    alarmRecyclerViewAdapter.setAllUnChecked();
+                    alarmRecyclerViewAdapter.notifyDataSetChanged();
+                }
+
+            }
+        });
 
         return view;
     }
 
-    private void setUpRecyclerView() {
+    private void setUpRecyclerView(int session) {
 
         // below line is for setting a layout manager for our recycler view.
         // here we are creating vertical list so we will provide orientation as vertical
@@ -108,7 +149,7 @@ public class AlarmFragment extends Fragment {
         medicineList = mainDatabase.medicineDao().getMedicineList();
 
         // we are initializing our adapter class and passing our arraylist to it.
-        alarmRecyclerViewAdapter = new AlarmRecyclerViewAdapter(getActivity(), medicineList);
+        alarmRecyclerViewAdapter = new AlarmRecyclerViewAdapter(getActivity(), medicineList, session);
 
         // in below two lines we are setting layoutmanager and adapter to our recycler view.
         medicineRecyclerView.setLayoutManager(linearLayoutManager);
@@ -158,22 +199,27 @@ public class AlarmFragment extends Fragment {
         checkBoxTextView.setPadding(0, 0, 0, 0);
         checkBoxTextView.setIncludeFontPadding(false);
 
-        setTitle();
+        setTime();
 
     }
 
-    private void setTitle(){
+    private void setTime(){
 
         if(currentTime == morning){
             titleTextView.setText("Morning Medicines");
+            setUpRecyclerView(1);
         }else if(currentTime == noon){
             titleTextView.setText("Noon Medicines");
+            setUpRecyclerView(2);
         }else if(currentTime == afternoon){
             titleTextView.setText("Afternoon Medicines");
+            setUpRecyclerView(3);
         }else if(currentTime == evening){
             titleTextView.setText("Evening Medicines");
+            setUpRecyclerView(4);
         }else if(currentTime == night){
             titleTextView.setText("Night Medicines");
+            setUpRecyclerView(5);
         }
 
     }
