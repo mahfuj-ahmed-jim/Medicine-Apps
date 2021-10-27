@@ -70,7 +70,12 @@ public class AlarmRecyclerViewAdapter extends RecyclerView.Adapter<AlarmRecycler
 
         // textView
         holder.medicineName.setText(filterList.get(position).getName());
-        holder.descriptionTextView.setText(filterList.get(position).getDescription());
+
+        if (filterList.get(position).getDescription() == null) {
+            holder.descriptionTextView.setVisibility(View.GONE);
+        } else {
+            holder.descriptionTextView.setText(filterList.get(position).getDescription());
+        }
 
         // medicine quantity
         if(filterList.get(position).getMedicineType() == 1){ // tablet
