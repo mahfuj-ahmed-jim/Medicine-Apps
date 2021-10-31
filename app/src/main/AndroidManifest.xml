@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ai.medicinereminder">
 
+    <uses-permission android:name="android.permission.SET_ALARM"></uses-permission>
+
     <application
         android:name=".Notification.NotificationClass"
         android:allowBackup="true"

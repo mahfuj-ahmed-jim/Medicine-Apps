@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.R;
@@ -28,7 +29,7 @@ public class SettingsFragment extends Fragment {
     // button
     private Button backButton;
 
-    private LinearLayout linearLayout;
+    private TextView alarmTimeTextView;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -62,7 +63,7 @@ public class SettingsFragment extends Fragment {
         // button
         backButton = view.findViewById(R.id.back_button_id);
 
-        linearLayout = view.findViewById(R.id.linear);
+        alarmTimeTextView = view.findViewById(R.id.textViewId_alarmTime);
 
         // on click listeners
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +73,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        alarmTimeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

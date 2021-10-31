@@ -3,6 +3,7 @@ package com.ai.medicinereminder.Alarm;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.Database.MainDatabase;
@@ -19,6 +20,12 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     // context
     private Context context;
+
+    // calendar
+    private Calendar calendar;
+
+    // alarm
+    private Alarm alarm;
 
     // room database
     private MainDatabase mainDatabase;
@@ -40,6 +47,14 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // context
         this.context = context;
+
+        // alarm
+        alarm = new Alarm(context);
+
+        // calendar
+        calendar = Calendar.getInstance();
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
 
         // room database
         mainDatabase = MainDatabase.getInstance(context);
@@ -181,6 +196,8 @@ public class AlarmReceiver extends BroadcastReceiver {
                 context.getString(R.string.alarm));
         in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(in);
+
+        Log.d("Verify", "New Page");
 
     }
 
