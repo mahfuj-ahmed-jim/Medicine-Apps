@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.ai.medicinereminder.R;
 
@@ -47,6 +48,8 @@ public class MedicineSharedPreference {
                 break;
 
         }
+
+        Log.d("Verify", time);
 
         editor.commit(); // write to shared preference
 

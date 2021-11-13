@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.ai.medicinereminder.Alarm.Alarm;
 import com.ai.medicinereminder.R;
@@ -44,6 +45,8 @@ public class SplashActivity extends AppCompatActivity {
         String time = medicineSharedPreference.getData(1);
 
         if(time == null){
+
+            Log.d("Verify", "Null");
 
             medicineSharedPreference.setData(1, "08 : 00 : AM"); // morning
             medicineSharedPreference.setData(2, "01 : 00 : PM"); // noon

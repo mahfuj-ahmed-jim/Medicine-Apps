@@ -24,28 +24,23 @@ public class Alarm {
 
         Intent intent;
 
-        if(sessionId == 6){ // for reset
+        /*if(sessionId == 6){ // for reset
             intent = new Intent(context, MedicineAlarmReceiver.class);
         }else{ // for session alarm
             intent = new Intent(context, AlarmReceiver.class);
-        }
+        }*/
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, PendingIntent.FLAG_ONE_SHOT);
+        intent = new Intent(context, AlarmReceiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, 0);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-                    calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
         }else{
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                    AlarmManager.INTERVAL_DAY, pendingIntent);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,
-                    calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+                AlarmManager.INTERVAL_DAY, pendingIntent);
         }
-
-        Log.d("Verify", sessionId+" Set Alarm");
-
-        Toast.makeText(context, sessionId+" Set Alarm", Toast.LENGTH_LONG).show();
 
     }
 
@@ -53,7 +48,7 @@ public class Alarm {
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, 0);
         alarmManager.cancel(pendingIntent);
 
         setAlarm(calendar, sessionId);
@@ -62,14 +57,9 @@ public class Alarm {
 
     public void cancelAlarm(int sessionId){
 
-
-        Log.d("Verify", sessionId+" Cancel Alarm");
-
-        Toast.makeText(context, sessionId+" Cancel Alarm", Toast.LENGTH_LONG).show();
-
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, 0);
         alarmManager.cancel(pendingIntent);
 
     }

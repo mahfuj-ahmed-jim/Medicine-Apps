@@ -3,6 +3,9 @@
     package="com.ai.medicinereminder">
 
     <uses-permission android:name="android.permission.SET_ALARM"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
         android:name=".Notification.NotificationClass"
@@ -13,8 +16,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineReminder">
 
-        <receiver android:name=".Alarm.AlarmReceiver"></receiver>
-        <receiver android:name=".Alarm.MedicineAlarmReceiver"></receiver>
+        <receiver android:name=".Alarm.AlarmReceiver">
+            <intent-filter android:priority="1">
+                <action android:name="com.blah.something.ALARM_RECIEVED" />
+                <action android:name="android.intent.action.SCREEN_ON" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Alarm.AlarmService"
+            android:enabled="true"
+            android:process=":your_service" >
+        </service>
 
         <activity
             android:name=".Activity.SplashActivity"

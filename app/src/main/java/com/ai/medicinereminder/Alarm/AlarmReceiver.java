@@ -1,13 +1,21 @@
 package com.ai.medicinereminder.Alarm;
 
+import static android.content.Context.POWER_SERVICE;
+
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.os.PowerManager;
 import android.util.Log;
 
 import com.ai.medicinereminder.Activity.PageActivity;
 import com.ai.medicinereminder.Database.MainDatabase;
 import com.ai.medicinereminder.Database.Medicine;
+import com.ai.medicinereminder.Database.MedicineHistory;
 import com.ai.medicinereminder.Notification.NotificationModifier;
 import com.ai.medicinereminder.R;
 import com.ai.medicinereminder.SharedPreference.AlarmSharedPreference;
@@ -176,6 +184,27 @@ public class AlarmReceiver extends BroadcastReceiver {
 
             }
 
+        }else{
+
+            // reset for next alarm
+            calendar.set(Calendar.HOUR_OF_DAY, this.morning/60);
+            calendar.set(Calendar.MINUTE, this.morning%60);
+            alarm.cancelAlarm(6);
+            alarm.setAlarm(calendar, 1);
+
+            for(MedicineHistory medicineHistory : mainDatabase.medicineHistoryDao().getMedicineHistoryList()){
+
+                medicineHistory.setMorning(false);
+                medicineHistory.setNoon(false);
+                medicineHistory.setAfternoon(false);
+                medicineHistory.setEvening(false);
+                medicineHistory.setNight(false);
+
+                // set all the medicine not eaten for the next day
+                mainDatabase.medicineHistoryDao().updateMedicineHistory(medicineHistory);
+
+            }
+
         }
 
     }
@@ -191,13 +220,85 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     public void newPage(){
 
+        //WAKE UP DEVICE
+        WakeLocker.acquire(context);
+
         Intent in = new Intent(context, PageActivity.class);
         in.putExtra(context.getString(R.string.activity),
                 context.getString(R.string.alarm));
         in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(in);
 
-        Log.d("Verify", "New Page");
+        Log.d("Verify", "Alarm");
+
+        WakeLocker.release();
+
+    }
+
+    public void setAlarm(){
+
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        Intent intent;
+
+        /*if(currentTime == morning || currentTime == noon || currentTime == afternoon ||
+                currentTime == evening || currentTime == night
+        ){ // for session alarm
+            intent = new Intent(context, AlarmReceiver.class);
+        }else{ // for reset
+            intent = new Intent(context, MedicineAlarmReceiver.class);
+        }*/
+
+        intent = new Intent(context, AlarmReceiver.class);
+        
+        int sessionId = 0;
+
+        if(currentTime == morning){
+
+            // for reset
+            calendar.set(Calendar.HOUR_OF_DAY, morning/60);
+            calendar.set(Calendar.MINUTE, morning%60);
+            sessionId = 1;
+
+        }else if(currentTime == noon){
+
+            // for reset
+            calendar.set(Calendar.HOUR_OF_DAY, noon/60);
+            calendar.set(Calendar.MINUTE, noon%60);
+            sessionId = 2;
+
+        }else if(currentTime == afternoon){
+
+            // for reset
+            calendar.set(Calendar.HOUR_OF_DAY, afternoon/60);
+            calendar.set(Calendar.MINUTE, afternoon%60);
+            sessionId = 3;
+
+        }else if(currentTime == evening){
+
+            // for reset
+            calendar.set(Calendar.HOUR_OF_DAY, evening/60);
+            calendar.set(Calendar.MINUTE, evening%60);
+            sessionId = 4;
+
+        }else if(currentTime == night){
+
+            // for reset
+            calendar.set(Calendar.HOUR_OF_DAY, night/60);
+            calendar.set(Calendar.MINUTE, night%60);
+            sessionId = 5;
+
+        }
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, sessionId, intent, 0);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
+        }else{
+            alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
+        }
 
     }
 
