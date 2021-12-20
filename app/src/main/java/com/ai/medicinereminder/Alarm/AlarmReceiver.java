@@ -40,12 +40,12 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     // time
     private int currentTime;
-    private int morning, noon, afternoon, evening, night;
+    private int morning, noon, afternoon, evening, night, reset;
 
     // shared preference
     private MedicineSharedPreference medicineSharedPreference;
     private AlarmSharedPreference alarmSharedPreference;
-    private String morningTime, noonTime, afternoonTime, eveningTime, nightTime;
+    private String morningTime, noonTime, afternoonTime, eveningTime, nightTime, resetTime;
 
     // notification
     NotificationModifier notificationModifier;
@@ -76,6 +76,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         this.afternoonTime = medicineSharedPreference.getData(3);
         this.eveningTime = medicineSharedPreference.getData(4);
         this.nightTime = medicineSharedPreference.getData(5);
+        this.resetTime = medicineSharedPreference.getData(6);
 
         // convert time to minutes
         String morningText [] = morningTime.split(" : ");
@@ -93,6 +94,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         this.evening = Integer.parseInt(eveningText[0])*60 + Integer.parseInt(eveningText[1]) +
                 (eveningText[2].equals("PM")? 720:0);
         this.night = Integer.parseInt(nightText[0])*60 + Integer.parseInt(nightText[1]) +
+                (nightText[2].equals("PM")? 720:0);
+        this.reset = Integer.parseInt(nightText[0])*60 + Integer.parseInt(nightText[1]) +
                 (nightText[2].equals("PM")? 720:0);
 
         Date currentTime = Calendar.getInstance().getTime();

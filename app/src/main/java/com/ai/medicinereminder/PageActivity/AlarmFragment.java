@@ -1,8 +1,10 @@
 package com.ai.medicinereminder.PageActivity;
 
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,6 +66,11 @@ public class AlarmFragment extends Fragment {
     private List<Medicine> medicineList = new ArrayList<>();
     private AlarmRecyclerViewAdapter alarmRecyclerViewAdapter;
 
+    // for alarm
+    private ConstraintLayout alarmLayout;
+    private Button alarmButton;
+    private MediaPlayer mediaPlayer;
+
     public AlarmFragment() {
         // Required empty public constructor
     }
@@ -107,8 +114,14 @@ public class AlarmFragment extends Fragment {
         // recycler view
         medicineRecyclerView = view.findViewById(R.id.recyclerViewId_alarm);
 
+        // for alarm
+        alarmButton = view.findViewById(R.id.button_alarm);
+        alarmLayout = view.findViewById(R.id.constraintLayout_alarm);
+
         // set up
         setUpFragment();
+        mediaPlayer = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.alarm);
+        mediaPlayer.start();
 
         // on click listeners
         updateButton.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +147,14 @@ public class AlarmFragment extends Fragment {
                     alarmRecyclerViewAdapter.notifyDataSetChanged();
                 }
 
+            }
+        });
+
+        alarmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alarmLayout.setVisibility(View.GONE);
+                mediaPlayer.stop();
             }
         });
 
