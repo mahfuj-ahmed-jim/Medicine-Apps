@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class MedicineTimeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button backButton;
 
     // alarm
     private Alarm alarm;
@@ -87,6 +89,7 @@ public class MedicineTimeFragment extends Fragment {
         afternoonTime = view.findViewById(R.id.textViewId_afternoon);
         eveningTime = view.findViewById(R.id.textViewId_evening);
         nightTime = view.findViewById(R.id.textViewId_night);
+        backButton = view.findViewById(R.id.back_button_id);
 
         // switches
         morningSwitch = view.findViewById(R.id.switchId_morning);
@@ -107,6 +110,13 @@ public class MedicineTimeFragment extends Fragment {
         alarmSharedPreference = new AlarmSharedPreference(getActivity().getApplicationContext());
         initializeTimerTextViews();
         initializeTimerTextSwitches();
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
 
         morningLayout.setOnClickListener(new View.OnClickListener() {
             @Override
