@@ -2,6 +2,8 @@
 
 A medicine reminder app that fulfills the user’s medication needs in one place. Users can add and track unlimited amounts of medicine with their proper details. This application also helps users to track their medical history.
 
+Play Store Link: https://play.google.com/store/apps/details?id=com.ai.medicinereminder&pli=1
+
 
 ## Features
 
