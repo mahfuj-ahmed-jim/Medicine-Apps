@@ -20,3 +20,7 @@ Play Store Link: https://play.google.com/store/apps/details?id=com.ai.medicinere
 - Java
 - Firebase
 - Room Database
+
+## Screens
+https://play-lh.googleusercontent.com/2SiQdJTDXGxUwJD6pbxdJJGKkZCEWqLJffiYti_OpPW5caMsb0BQLdvRKl5TyIpXFJ8=w5120-h2880-rw
+
